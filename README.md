@@ -34,7 +34,7 @@ Complete end-to-end training framework designed for maximum efficiency:
 | Model                  | #Vision Param | #Language Param | #Total Param | HF Link                                                                      |
 |------------------------|---------------|-----------------|--------------|------------------------------------------------------------------------------|
 | LLaVA-OV-1.5-4B-Instruct      | 0.3B          | 4.4B            | 4.7B         | [🤗 link]()                |
-| LLaVA-OV-1.5-8B-Instruct      | 0.3B          | 8.2B            | 8.5B         | [🤗 link](https://huggingface.co/lmms-lab/LLaVA-One-Vision-1.5-8B-Instruct)                |
+| LLaVA-OV-1.5-8B-Instruct      | 0.3B          | 8.2B            | 8.5B         | [🤗 link](https://huggingface.co/lmms-lab/LLaVA-OneVision-1.5-8B-Instruct) |
 
 
 ## Dataset
@@ -45,7 +45,7 @@ Complete end-to-end training framework designed for maximum efficiency:
 | Description | Link |
 |-------------|------|
 | Mid-training data for LLaVA-OneVision-1.5 | [🤗 Download (Uploading!)](https://huggingface.co/datasets/lmms-lab/LLaVA-One-Vision-1.5-Mid-Training-85M) |
-| SFT data for LLaVA-OneVision-1.5 | [🤗 Download (Uploading!)](https://huggingface.co/datasets/lmms-lab/LLaVA-One-Vision-1.5-Insturct-26M) |
+| SFT data for LLaVA-OneVision-1.5 | [🤗 Download (Uploading!)](https://huggingface.co/datasets/lmms-lab/LLaVA-OneVision-1.5-Insturct-Data) |
 
 
 ## Evaluation Results
