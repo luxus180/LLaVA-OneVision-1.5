@@ -10,7 +10,7 @@
 A family of fully open-source large multimodal models demonstrating **superior performance** across multiple multimodal benchmarks, **outperforming Qwen2.5-VL** in most evaluation tasks.
 
 2. **High-Quality Data at Scale**
-Meticulously curated **pre-training and SFT data** with rigorous filtering and quality control, achieving **superior data efficiency** with only **5B tokens** (1.2% of Qwen2.5-VL's training data).
+Meticulously curated **pre-training and SFT data** with rigorous filtering and quality control, achieving **superior data efficiency** with only **64B tokens**.
 - Concept-balanced, highly diverse, high-quality caption data
 - Comprehensive instruction fine-tuning data covering a wide range of tasks
 
