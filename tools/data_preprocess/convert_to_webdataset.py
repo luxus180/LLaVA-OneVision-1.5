@@ -2,9 +2,13 @@
 import argparse
 import json
 import os
+import yaml
 import webdataset as wds
 from tqdm import tqdm
 import random
+from megatron.energon.epathlib import EPath
+from megatron.energon.flavors import BaseWebdatasetFactory
+from megatron.energon.flavors.webdataset import MAIN_FOLDER_NAME
 
 def sample_loader_template(media: str=None):
     """Returns a template for a sample_loader.py file."""
@@ -50,9 +54,15 @@ def construct_sample(args, vision, paths, index, entry):
     vision_name = []
 
     for i, path in enumerate(paths):
-        with open(os.path.join(directory, path), "rb") as vision_file:
-            vision_data.update({str(i) + '_' + os.path.basename(path) : vision_file.read()})
-            vision_name.append(str(i) + '_' + os.path.basename(path))
+        full_path = os.path.join(directory, path)
+        if not os.path.exists(full_path):
+            raise FileNotFoundError(f"Media file not found: {full_path}")
+        try:
+            with open(full_path, "rb") as vision_file:
+                vision_data.update({str(i) + '_' + os.path.basename(path) : vision_file.read()})
+                vision_name.append(str(i) + '_' + os.path.basename(path))
+        except IOError as e:
+            raise IOError(f"Failed to read media file {full_path}: {e}")
 
     content = {
         "texts": entry[args.columns_messages],
@@ -68,12 +78,14 @@ def construct_sample(args, vision, paths, index, entry):
 
 def convert_to_wds(args):
     """ Convert dataset to wds format """
-    assert args.media in ['video', 'image', 'mix'], "Invalid media type: {args.media}"
+    assert args.media in ['video', 'image', 'mix'], f"Invalid media type: {args.media}"
 
     if args.media == "video":
         assert args.video_dir is not None
     if args.media == "image":
         assert args.image_dir is not None
+    if args.media == "mix":
+        assert args.video_dir is not None or args.image_dir is not None, "At least one media directory required for mix mode"
 
     if not os.path.exists(args.output_dir):
         os.mkdir(args.output_dir)
@@ -86,7 +98,12 @@ def convert_to_wds(args):
     with wds.ShardWriter(tar, maxcount=args.maxcount, maxsize=args.maxsize) as shard_writer:
         for index, entry in enumerate(tqdm(data)):
             if args.media == 'image':
-                image_path = entry.get('image') or entry.get('images')[0]
+                image_path = entry.get('image')
+                if image_path is None:
+                    images = entry.get('images')
+                    if images is None or len(images) == 0:
+                        raise ValueError(f"No image path found in entry {index}")
+                    image_path = images[0]
                 with open(os.path.join(args.image_dir, image_path), "rb") as img_file:
                     image_data = img_file.read()
                 sample = {
@@ -135,14 +152,6 @@ def write_config(path: EPath, media: str=None):
         yaml.dump(dataset_definition, f, sort_keys=False)
     with (path / MAIN_FOLDER_NAME / "sample_loader.py").open("w") as f:
         f.write(sample_loader_template(media))
-
-    BaseWebdatasetFactory.prepare_dataset(
-        path,
-        all_tars,
-        split_parts_ratio=[("train", 1.0), ("val", 0), ("test", 0)],
-        tar_index_only=False,
-        workers=96,
-    )
 
     BaseWebdatasetFactory.prepare_dataset(
         path,
