@@ -2,14 +2,13 @@
 import argparse
 import json
 import os
+import yaml
 import webdataset as wds
 from tqdm import tqdm
 import random
 from megatron.energon.epathlib import EPath
 from megatron.energon.flavors import BaseWebdatasetFactory
 from megatron.energon.flavors.webdataset import MAIN_FOLDER_NAME
-from megatron.energon.flavors.webdataset.prepare import WebdatasetPreparator
-from megatron.energon.flavors.webdataset.structs import ShardInfo, WebdatasetInfo, WebdatasetSplits
 
 def sample_loader_template(media: str=None):
     """Returns a template for a sample_loader.py file."""
