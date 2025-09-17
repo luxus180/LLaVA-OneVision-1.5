@@ -197,7 +197,7 @@ LLaVA-OneVision-1.5-8B-stage0-mcore-TP1-PP1 \
 
 ### 4. Stage 1 Alignment-Training
 
-If you need to quickly get started, you can download our lightweight 2.5M packed subset at [link]().
+If you need to quickly get started, you can download our lightweight 2.5M packed subset at [Quick Start Dataset Link](https://huggingface.co/datasets/lmms-lab/LLaVA-OneVision-1.5-Mid-Training-Webdataset-Quick-Start).
 
 
 ```bash
