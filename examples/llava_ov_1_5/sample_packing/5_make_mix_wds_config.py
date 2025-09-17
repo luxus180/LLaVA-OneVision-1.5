@@ -136,9 +136,11 @@ def main(mode='merge'):
         path=cfg['data']['directory']
         num_wds_dir=0
         wds_path=[]
+        tmp=[]
         for name in os.listdir(path) :
             if name.endswith('_wds'):
                 num_wds_dir+=1
+                tmp.append(os.path.join(path,name))
                 wds_path.append(os.path.join(path,name,MAIN_FOLDER_NAME,'.info.yaml'))
         if num_wds_dir>1:
             all_done=False
@@ -156,6 +158,9 @@ def main(mode='merge'):
                             class_name="PackedCaptioningSample",mode=mode) 
                 if mode=='merge':
                     find_and_merge_yaml_files(path)
-            print('config generation completed')
+            print(f'config generation completed,your train file path is: {path}')
+        else:
+            print(f'config generation completed,your train file path is: {tmp[0]}')
+
 if __name__=="__main__":
     main('generate')
