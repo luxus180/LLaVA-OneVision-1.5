@@ -86,7 +86,7 @@ def convert_to_wds(args):
     if args.media == "image":
         assert args.image_dir is not None
     if args.media == "mix":
-        assert args.video_dir is not None and args.image_dir is not None, , "At least one media directory required for mix mode"
+        assert args.video_dir is not None or args.image_dir is not None, "At least one media directory required for mix mode"
 
     if not os.path.exists(args.output_dir):
         os.mkdir(args.output_dir)
