@@ -1,5 +1,14 @@
 AIAK_TRAINING_PATH="${AIAK_TRAINING_PATH:-/workspace/LLaVA-OneVision-1.5}"
 AIAK_MAGATRON_PATH="${AIAK_MAGATRON_PATH:-${AIAK_TRAINING_PATH%/}/aiak_megatron}"
+TP="${1:-1}"
+PP="${2:-1}"
+SEQ_LEN="${3:-32768}"
+MBS="${4:-1}"
+GBS="${5:-8}"
+NSTEP="${6:-20000}"
+DATA_PATH=${DATA_PATH:-"/workspace/dataset/LLaVA-OneVision-1.5-Mid-Training-Webdataset-Quick-Start"}
+TOKENIZER_PATH=${TOKENIZER_PATH:-"/workspace/LLaVA-One-Vision-1.5/LLaVA-OneVision-1.5-8B-stage0"}
+CHECKPOINT_PATH=${CHECKPOINT_PATH:-"/workspace/LLaVA-One-Vision-1.5/stage_1_alignment_llava_ov_8b"}
 
 #! /bin/bash
 # The script needs to be run on at least 1 nodes.
@@ -61,18 +70,6 @@ fi
 # --- End of Multi-node configuration ---
 
 
-TP="${1:-1}"
-PP="${2:-1}"
-SEQ_LEN="${3:-32768}"
-MBS="${4:-1}"
-GBS="${5:-8}"
-NSTEP="${6:-5000}"
-
-
-DATA_PATH=${DATA_PATH:-"/dataset/LLaVA-OneVision-1.5-Mid-Training-85M"}
-TOKENIZER_PATH=${TOKENIZER_PATH:-"/workspace/LLaVA-One-Vision-1.5/LLaVA-OneVision-1.5-8B-instruct"}
-CHECKPOINT_PATH=${CHECKPOINT_PATH:-"/workspace/LLaVA-One-Vision-1.5/LLaVA-OneVision-1.5-8B-instruct-mcore-tp1-pp1"}
-
 SAVE_CKPT_PATH=$(basename "$0" .sh)
 TENSORBOARD_PATH="${SAVE_CKPT_PATH}/tensorboard"
 
@@ -115,7 +112,7 @@ DATA_ARGS=(
 
 TRAINING_ARGS=(
     --training-phase sft
-    --trainable-modules adapter
+    --trainable-modules language_model adapter vision_model
     --seq-length "${SEQ_LEN}"
     --max-position-embeddings 32768
     --init-method-std 0.02

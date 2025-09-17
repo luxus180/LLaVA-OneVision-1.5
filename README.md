@@ -201,12 +201,15 @@ If you need to quickly get started, you can download our lightweight 2.5M packed
 
 
 ```bash
-# TOKENIZER_PATH: Path to the Hugging Face tokenizer model directory used for tokenization
-# CHECKPOINT_PATH: Path to the Megatron-formatted checkpoint converted from pre-trained model weights
-# SAVE_CKPT_PATH: Directory where training checkpoints will be saved during pre-training
-# AIAK_TRAINING_PATH: Root directory of the AIAK-Training-LLM project
-# DATA_PATH: Directory containing WebDataset-formatted pre-training data (tar files)
-
+# ============================================================
+# LLaVA-OneVision 1.5 — Stage 1 Alignment (8B) — Quick Start
+#
+# Required environment variables:
+#   AIAK_TRAINING_PATH  Root directory of the AIAK-Training-LLM project
+#   DATA_PATH           Directory with WebDataset shards (.tar) for pretraining
+#   TOKENIZER_PATH      Hugging Face tokenizer directory
+#   CHECKPOINT_PATH     Megatron-formatted checkpoint directory (e.g., mcore TP1/PP1)
+#   SAVE_CKPT_PATH      Output directory for saving training checkpoints
 
 AIAK_TRAINING_PATH=/workspace/LLaVA-OneVision-1.5 \
 DATA_PATH=LLaVA-OneVision-1.5-Mid-Training-Webdataset-Quick-Start \
@@ -216,17 +219,33 @@ bash examples/llava_ov_1_5/quick_start/stage_1_alignment_llava_ov_8b.sh
 ```
 
 ### 5. Stage 1.5 Mid-Training 
-comming soon
+```bash
+# ============================================================
+# LLaVA-OneVision 1.5 — Stage 1.5 Mid-Training
+# FIXME: Make stage_1_alignment_llava_ov_8b checkpoint available for release
+AIAK_TRAINING_PATH=/workspace/LLaVA-OneVision-1.5 \
+DATA_PATH=LLaVA-OneVision-1.5-Mid-Training-Webdataset-Quick-Start \
+TOKENIZER_PATH=LLaVA-OneVision-1.5-8B-stage0 \
+CHECKPOINT_PATH=stage_1_alignment_llava_ov_8b_release \
+bash examples/llava_ov_1_5/quick_start/stage_1.5_mid_training_llava_ov_8b.sh
+```
+
 
 ### 6. Stage 2 Instruct-Training
 comming soon
+```bash
+# ============================================================
+# LLaVA-OneVision 1.5 — Stage 2 Instruct-Training
+# FIXME: make stage_1.5_mid_training_llava_ov_8b checkpoint available for release
+```
+
 
 ### 7. Convert mcore to huggingface
 ```bash
 AIAK_TRAINING_PATH=/workspace/LLaVA-OneVision-1.5 \
 bash examples/llava_ov_1_5/convert/convert_8b_mcore_to_hf.sh \
 <Your Checkpoint Path> \
-LLaVA-OneVision-1.5-8B-instruct \
+LLaVA-OneVision-1.5-8B-2M-Mid-Training-780K-Instruct \
 1 1
 ```
 
