@@ -1,15 +1,5 @@
 #!/bin/bash
-IMAGE=llava_megatron:25.04
-CONTAINER_NAME="your container name"
-docker run -d --gpus all \
-    --ipc host \
-    --net host \
-    --privileged \
-    --cap-add IPC_LOCK \
-    --ulimit memlock=-1 \
-    --ulimit stack=67108864 \
-    --name "$CONTAINER_NAME" \
-    "$IMAGE" sleep infinity
+CONTAINER_NAME="your_container_name"
 docker start "$CONTAINER_NAME"
 docker exec -it "$CONTAINER_NAME" bash -c '
     set -e
@@ -20,7 +10,7 @@ docker exec -it "$CONTAINER_NAME" bash -c '
         python "$script_name"
         echo ">>>>>>>>>>>$script_name execution completed>>>>>>>>>>>>>>"
     }
-    cd examples/llava_ov_1_5/sample_packing
+    cd /your_LLaVA-OneVision-1.5_path/llava_ov_1_5/sample_packing
     
     run_python_script "huggingface_data_parse.py"
     run_python_script "1_s1_get_tokenlens_v3-sft.py"

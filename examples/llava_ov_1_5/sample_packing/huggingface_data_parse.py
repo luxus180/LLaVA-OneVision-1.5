@@ -1,6 +1,6 @@
 from datasets import load_dataset
 from multiprocessing import Pool
-from tool import cfg,get_ip_info,get_s1_file
+from tool import cfg,get_ip_info,get_init_file
 import os
 from functools import partial
 from tqdm import tqdm
@@ -40,7 +40,7 @@ def parese_dataset(data_item,ip_indx,ip_num,dst_dir):
 
 def main(workers):
     data_path=cfg['hf_data']
-    TOKEN_INFO_FILE,MAX_TOKEN_LEN,save_files_dir,big_dir,DEFAULT_DIRECTORY=get_s1_file()
+    TOKEN_INFO_FILE,MAX_TOKEN_LEN,save_files_dir,big_dir,DEFAULT_DIRECTORY=get_init_file()
     dataset = load_dataset(data_path,data_files='*/*.parquet', split="train", streaming=True) 
     data_iter = enumerate(dataset)
     ip_indx,ip_num,_=get_ip_info()

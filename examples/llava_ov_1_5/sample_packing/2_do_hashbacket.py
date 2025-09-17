@@ -8,7 +8,7 @@ from tool import get_init_file
 
 random.seed(100)
 def update_info(update_stats):
-    print("\update analysis:")
+    print("update analysis:")
     print(f"The number of deleted keys: {update_stats['changes']['keys_removed']}")
     print(f"The number of deleted items: {update_stats['changes']['items_removed']}")
     print(f"Remaining key number: {update_stats['after']['total_keys']}") 
