@@ -232,7 +232,11 @@ bash examples/llava_ov_1_5/quick_start/stage_1.5_mid_training_llava_ov_8b.sh
 
 
 ### 6. Stage 2 Instruct-Training
-comming soon
+
+If you need to quickly get started, you can download LLaVA-NeXT-780K at [Quick Start Dataset Link](https://huggingface.co/datasets/lmms-lab/LLaVA-NeXT-780k-webdataset).
+
+
+coming soon
 ```bash
 # ============================================================
 # LLaVA-OneVision 1.5 — Stage 2 Instruct-Training
