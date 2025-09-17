@@ -212,9 +212,8 @@ AIAK_TRAINING_PATH=/workspace/LLaVA-OneVision-1.5 \
 DATA_PATH=LLaVA-OneVision-1.5-Mid-Training-Webdataset-Quick-Start \
 TOKENIZER_PATH=LLaVA-OneVision-1.5-8B-stage0 \
 CHECKPOINT_PATH=LLaVA-OneVision-1.5-8B-stage0-mcore-TP1-PP1 \
-bash examples/llava_ov_1_5/quick_start/training_llava_ov_8b_stage_1.sh
+bash examples/llava_ov_1_5/quick_start/stage_1_alignment_llava_ov_8b.sh
 ```
-
 
 ### 5. Stage 1.5 Mid-Training 
 comming soon
