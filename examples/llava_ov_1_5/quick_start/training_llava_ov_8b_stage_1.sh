@@ -62,19 +62,18 @@ fi
 
 
 TP="${1:-1}"
-PP="${2:-2}"
+PP="${2:-1}"
 SEQ_LEN="${3:-32768}"
 MBS="${4:-1}"
-GBS="${5:-112}"
-NSTEP="${6:-70000}"
+GBS="${5:-8}"
+NSTEP="${6:-5000}"
 
 
 DATA_PATH=${DATA_PATH:-"/dataset/LLaVA-OneVision-1.5-Mid-Training-85M"}
-TOKENIZER_PATH=${TOKENIZER_PATH:-"/workspace/LLaVA-One-Vision-1.5/LLaVA-OneVision-1.5-4B-instruct"}
-CHECKPOINT_PATH=${CHECKPOINT_PATH:-"/workspace/LLaVA-One-Vision-1.5/LLaVA-OneVision-1.5-4B-instruct-mcore-tp1-pp1"}
+TOKENIZER_PATH=${TOKENIZER_PATH:-"/workspace/LLaVA-One-Vision-1.5/LLaVA-OneVision-1.5-8B-instruct"}
+CHECKPOINT_PATH=${CHECKPOINT_PATH:-"/workspace/LLaVA-One-Vision-1.5/LLaVA-OneVision-1.5-8B-instruct-mcore-tp1-pp1"}
 
 SAVE_CKPT_PATH=$(basename "$0" .sh)
-CHECKPOINT_PATH=$SAVE_CKPT_PATH
 TENSORBOARD_PATH="${SAVE_CKPT_PATH}/tensorboard"
 
 mkdir -p "$SAVE_CKPT_PATH"
@@ -101,7 +100,7 @@ else
 fi
 
 MODEL_ARGS=(
-    --model-name llava-ov-1.5-4b
+    --model-name llava-ov-1.5-8b
 )
 
 DATA_ARGS=(
@@ -116,13 +115,13 @@ DATA_ARGS=(
 
 TRAINING_ARGS=(
     --training-phase sft
-    --trainable-modules language_model adapter vision_model
+    --trainable-modules adapter
     --seq-length "${SEQ_LEN}"
     --max-position-embeddings 32768
     --init-method-std 0.02
     --micro-batch-size "${MBS}"
     --global-batch-size "${GBS}"
-    --lr 1.0e-5
+    --lr 1.0e-4
     --min-lr 1.0e-6
     --clip-grad 1.0
     --weight-decay 0.01
@@ -137,7 +136,7 @@ TRAINING_ARGS=(
     --lr-warmup-fraction 0.002
     --initial-loss-scale 65536
     --bf16
-    # --load "$CHECKPOINT_PATH"
+    --load "$CHECKPOINT_PATH"
     --save "$SAVE_CKPT_PATH"
     --save-interval 2000
     --ckpt-format torch
@@ -146,7 +145,7 @@ TRAINING_ARGS=(
     --ckpt-fully-parallel-load
     --recompute-granularity full
     --recompute-method uniform
-    --recompute-num-layers 1
+    --recompute-num-layers 4
 )
 
 MODEL_PARALLEL_ARGS=(

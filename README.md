@@ -87,6 +87,55 @@ All evaluations were conducted using lmms_eval.
 ## Quick Start with HuggingFace
 
 ```python
+from transformers import AutoTokenizer, AutoProcessor, AutoModelForCausalLM
+from qwen_vl_utils import process_vision_info
+model_path = "lmms-lab/LLaVA-One-Vision-1.5-8B-Instruct"
+
+# default: Load the model on the available device(s)
+model = AutoModelForCausalLM.from_pretrained(
+    model_path, torch_dtype="auto", device_map="auto", trust_remote_code=True
+)
+
+# default processer
+processor = AutoProcessor.from_pretrained(model_path, trust_remote_code=True)
+
+messages = [
+    {
+        "role": "user",
+        "content": [
+            {
+                "type": "image",
+                "image": "https://qianwen-res.oss-cn-beijing.aliyuncs.com/Qwen-VL/assets/demo.jpeg",
+            },
+            {"type": "text", "text": "Describe this image."},
+        ],
+    }
+]
+
+# Preparation for inference
+text = processor.apply_chat_template(
+    messages, tokenize=False, add_generation_prompt=True
+)
+image_inputs, video_inputs = process_vision_info(messages)
+inputs = processor(
+    text=[text],
+    images=image_inputs,
+    videos=video_inputs,
+    padding=True,
+    return_tensors="pt",
+)
+inputs = inputs.to("cuda")
+
+# Inference: Generation of the output
+generated_ids = model.generate(**inputs, max_new_tokens=1024)
+generated_ids_trimmed = [
+    out_ids[len(in_ids) :] for in_ids, out_ids in zip(inputs.input_ids, generated_ids)
+]
+output_text = processor.batch_decode(
+    generated_ids_trimmed, skip_special_tokens=True, clean_up_tokenization_spaces=False
+)
+print(output_text)
+
 ```
 
 
@@ -112,27 +161,44 @@ docker build -t llava_megatron:25.04 .
 
 # Run container
 docker run -d --gpus all \
-    --ipc host \
-    --net host \
-    --privileged \
-    --cap-add IPC_LOCK \
-    --ulimit memlock=-1 \
-    --ulimit stack=67108864 \
+    --ipc host --net host --privileged --cap-add IPC_LOCK \
+    --ulimit memlock=-1 --ulimit stack=67108864 \
     --name "llava_container" \
     llava_megatron:25.04
 ```
 
 ### 3. Checkpoint and Format Conversion
 
-1. Download the LLaVA-OneVision-1.5 pre-trained model from HuggingFace
-2. Convert the model from HuggingFace format to Megatron format:
+You have two options to get started with LLaVA-OneVision-1.5-stage-0:
+
+#### Option 1: Download pre-trained model from HuggingFace
+Download our `LLaVA-OneVision-1.5-8B-stage0` model directly from [HuggingFace](https://huggingface.co/lmms-lab/LLaVA-OneVision-1.5-8B-stage0).
+
+#### Option 2: Merge initial weights yourself
+Alternatively, you can merge the initial weights from the original ViT and LLM:
+```bash
+python ds/merge_model.py \
+--vit_path DeepGlint-AI/rice-vit-large-patch14-560 \
+--llm_path Qwen/Qwen3-8B-Base \
+--output LLaVA-OneVision-1.5-8B-stage0
+
+```
+Note: When merging weights, the adapter component will be initialized with default values.
+
+Convert the model from HuggingFace format to Megatron format:
 
 ```bash
-# Example conversion command
-docker exec -it llava_container bash -c "bash \"examples/llava_ov_1_5/convert/convert_4b_hf_to_mcore.sh\" \"$your_huggingface_model\" \"$path_to_save_megatron_model\" 1"
+AIAK_TRAINING_PATH=/workspace/LLaVA-OneVision-1.5 \
+bash examples/llava_ov_1_5/convert/convert_8b_hf_to_mcore.sh \
+LLaVA-OneVision-1.5-8B-stage0 \
+LLaVA-OneVision-1.5-8B-stage0-mcore-TP1-PP1 \
+1 1
 ```
 
-### 4. Training
+### 4. Stage 1 Alignment-Training
+
+If you need to quickly get started, you can download our lightweight 2.5M packed subset at [link]().
+
 
 ```bash
 # TOKENIZER_PATH: Path to the Hugging Face tokenizer model directory used for tokenization
@@ -141,7 +207,28 @@ docker exec -it llava_container bash -c "bash \"examples/llava_ov_1_5/convert/co
 # AIAK_TRAINING_PATH: Root directory of the AIAK-Training-LLM project
 # DATA_PATH: Directory containing WebDataset-formatted pre-training data (tar files)
 
-AIAK_TRAINING_PATH=/workspace/LLaVA-OneVision-1.5 DATA_PATH=<Dataset Path> TOKENIZER_PATH=<Tokenizer Path> CHECKPOINT_PATH=<Checkpoint Path> bash examples/llava_ov_1_5/mid_training_llava_ov_4b.sh
+
+AIAK_TRAINING_PATH=/workspace/LLaVA-OneVision-1.5 \
+DATA_PATH=LLaVA-OneVision-1.5-Mid-Training-Webdataset-Quick-Start \
+TOKENIZER_PATH=LLaVA-OneVision-1.5-8B-stage0 \
+CHECKPOINT_PATH=LLaVA-OneVision-1.5-8B-stage0-mcore-TP1-PP1 \
+bash examples/llava_ov_1_5/quick_start/training_llava_ov_8b_stage_1.sh
+```
+
+
+### 5. Stage 1.5 Mid-Training 
+comming soon
+
+### 6. Stage 2 Instruct-Training
+comming soon
+
+### 7. Convert mcore to huggingface
+```bash
+AIAK_TRAINING_PATH=/workspace/LLaVA-OneVision-1.5 \
+bash examples/llava_ov_1_5/convert/convert_8b_mcore_to_hf.sh \
+<Your Checkpoint Path> \
+LLaVA-OneVision-1.5-8B-instruct \
+1 1
 ```
 
 

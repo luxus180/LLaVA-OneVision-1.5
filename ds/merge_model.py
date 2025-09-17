@@ -1,17 +1,20 @@
 from llavaonevision1_5.configuration_llavaonevision1_5_8b import Llavaonevision1_5Config
 from llavaonevision1_5.modeling_llavaonevision1_5 import LLaVAOneVision1_5_ForConditionalGeneration
 from transformers import Qwen2Tokenizer, AutoProcessor
-from transformers import Qwen2VLImageProcessor, Qwen2VLVideoProcessor
+from transformers import MLCDVisionModel
+from transformers import CLIPImageProcessor
+from transformers import Qwen2VLImageProcessor, AutoProcessor
+from transformers import AutoModelForCausalLM, AutoTokenizer
 import os
 import torch
 import numpy as np
 from transformers import Qwen2Tokenizer, logging
-from safetensors.torch import load_file, save_file
+from safetensors.torch import load_file
 from PIL import Image, ImageDraw
 from huggingface_hub import hf_hub_download, snapshot_download
 import requests
 from io import BytesIO
-from qwen_vl_utils import process_vision_info
+
 import argparse
 
 logging.set_verbosity_info()
@@ -49,10 +52,15 @@ def load_vit_weights(model, vit_path):
         vit_path: ViT model path
     """
     print(f"Loading weight form: {vit_path}")
-    cache_path = hf_hub_download(vit_path, "model.safetensors")
-    vit_weights = load_file(cache_path)
 
-    # Count successfully loaded parameters
+    if os.path.exists(vit_path):
+        print(f"Loading weights from local file: {vit_path}")
+        cache_path = os.path.join(vit_path, "model.safetensors")
+    else:
+        print(f"Loading weights from Hugging Face Hub: {vit_path}")
+        cache_path = hf_hub_download(vit_path, "model.safetensors")
+
+    vit_weights = load_file(cache_path)
     loaded_keys = 0
     VIT_KEYS_TO_MODIFY_MAPPING = {
         "vision_model.": "model.visual.",
@@ -88,7 +96,6 @@ def load_vit_weights(model, vit_path):
             new_state_dict[key] = value
 
         new_state_dict2 = {}
-        # 处理 qkv 的合并
         for key, value in new_state_dict.items():
             if key.startswith("model.visual.blocks.") and "self_attn" in key and ("q_proj" in key or "k_proj" in key or "v_proj" in key):
                 block_index = key.split('.')[3]
@@ -136,7 +143,7 @@ def load_adapter_weights(model, adapter_path, cur_len):
         adapter_weights = torch.load(adapter_path, map_location="cpu")
         if "state_dict" in adapter_weights:
             adapter_weights = adapter_weights["state_dict"]
-    
+
     # Count successfully loaded parameters
     loaded_keys = 0
     total_keys = 0
@@ -182,7 +189,10 @@ def load_llm_weights(model, llm_path, cur_len):
         llm_path: LLM model path
     """
     print(f"Loading weight form: {llm_path}")
-    cache_path = snapshot_download(llm_path, allow_patterns="*.safetensors")
+    if os.path.exists(llm_path):
+        cache_path = llm_path
+    else:
+        cache_path = snapshot_download(llm_path, allow_patterns="*.safetensors")
 
 
     llm_weights = {}
@@ -249,8 +259,7 @@ def validate_vit_consistency(model, vit_path, img_path):
     sample_image = Image.open(BytesIO(response.content)).convert("RGB")
     sample_image = sample_image.resize((560, 560))
     
-    from transformers import MLCDVisionModel
-    from transformers import CLIPImageProcessor
+
     rice_model = MLCDVisionModel.from_pretrained(vit_path, device_map={"": f"cuda:{CUDA_DEVICE}"}, torch_dtype=torch.float32)
     processor = CLIPImageProcessor.from_pretrained(vit_path, device_map={"": f"cuda:{CUDA_DEVICE}"}, torch_dtype=torch.float32)
     rice_inputs = processor.preprocess(images=sample_image, return_tensors="pt").to(dtype=model.dtype, device=rice_model.device)
@@ -273,7 +282,7 @@ def validate_vit_consistency(model, vit_path, img_path):
     rice_vit_features = reord_output_list[-1]
     
     
-    from transformers import Qwen2VLImageProcessor, AutoProcessor
+
     image_grid_thw = torch.tensor([[1, 40, 40]], device=model.device, dtype=torch.long)
     image_processor = Qwen2VLImageProcessor()
     image_processor.temporal_patch_size=1
@@ -302,7 +311,7 @@ def validate_llm_consistency(model, llm_path, sample_text):
     print("Verifying consistency of LLM component...")
 
     # Load original LLM model
-    from transformers import AutoModelForCausalLM, AutoTokenizer
+
     original_llm = AutoModelForCausalLM.from_pretrained(llm_path).to(dtype=model.dtype, device=model.device)
     tokenizer = AutoTokenizer.from_pretrained(llm_path)
 
