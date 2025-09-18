@@ -21,7 +21,11 @@ Complete end-to-end training framework designed for maximum efficiency:
 - Built on **MegatronLM** with support for **MoE**, **FP8**, and **long sequence parallelization**
 - Optimized codebase for cost-effective scaling
 
-4. **Fully Open Framework** for community access and reproducibility:
+- - [ ] Data load balancing optimization
+- - [ ] More efficient multimodal model parallelism strategy
+- - [ ] FP8 training support
+
+1. **Fully Open Framework** for community access and reproducibility:
 - ✅ High-quality pre-training & SFT data
 - ✅ Complete training framework & code
 - ✅ Training recipes & configurations
