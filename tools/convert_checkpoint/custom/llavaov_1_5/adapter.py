@@ -60,6 +60,24 @@ elif (args.load_platform, args.save_platform) == ('huggingface', 'mcore'):
     state_dict = [{'model': deepcopy(target)} for i in range(tp)]
     save_megatron_checkpoint(state_dict, os.path.join(args.save_ckpt_path, 'release'))
 
+elif (args.load_platform, args.save_platform) == ('mcore', 'mcore'):
+    """ megatron to huggingface """
+    if args.megatron_path is not None:
+        sys.path.insert(0, args.megatron_path)
+    print(" ====== convert adapter from Megatron Core to Megatron Core ======")
+    tp = args.tensor_model_parallel_size
+    state_dict = load_megatron_checkpoint(args.load_ckpt_path)
+    if args.pipeline_model_parallel_size == 1:
+        source = state_dict[0]['model']
+        target = deepcopy(source)
+    else:
+        source = state_dict[0][0]['model']
+        target = deepcopy(source)
+        
+    # Create the new state dict structure
+    new_state_dict = [{'model': deepcopy(target)} for i in range(tp)]
+    save_megatron_checkpoint(new_state_dict, os.path.join(args.save_ckpt_path, 'release'))
+
 else:
     raise NotImplementedError
 

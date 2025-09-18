@@ -13,7 +13,7 @@ SAVE_ADAPTER=./tmp/adapter-mcore
 SAVE_PATCH=./tmp/patch-mcore
 
 
-# qwen2
+# llm
 python $CONVERT_CHECKPOINT_PATH/model.py \
     --load_platform=huggingface \
     --save_platform=mcore \

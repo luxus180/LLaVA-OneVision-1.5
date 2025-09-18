@@ -142,6 +142,17 @@ print(output_text)
 
 ```
 
+## Evaluation
+```
+# pip install git+https://github.com/EvolvingLMMs-Lab/lmms-eval.git  
+
+accelerate launch --num_processes=8 --main_process_port 12399 -m lmms_eval \
+    --model=llava_onevision1_5 \
+    --model_args=pretrained=lmms-lab/LLaVA-OneVision-1.5-8B-Instruct,attn_implementation=flash_attention_2,max_pixels=3240000 \
+    --tasks=mmmu_val,mmmu_pro_standard,mmbench_en_test,mmerealworld,mmerealworld_cn,ai2d,ai2d_no_mask,vstar_bench,chartqa,charxiv,docvqa_test,mathvista_testmini,mmstar,scienceqa \
+    --batch_size=1
+```
+
 
 ## Quick Start Guide
 
@@ -197,14 +208,12 @@ If you need to quickly get started, you can download our lightweight 2.5M packed
 
 ```bash
 # ============================================================
-#
 # Required environment variables:
 #   AIAK_TRAINING_PATH  Root directory of the AIAK-Training-LLM project
 #   DATA_PATH           Directory with WebDataset shards (.tar) for pretraining
 #   TOKENIZER_PATH      Hugging Face tokenizer directory
 #   CHECKPOINT_PATH     Megatron-formatted checkpoint directory (e.g., mcore TP1/PP1)
 #   SAVE_CKPT_PATH      Output directory for saving training checkpoints
-
 AIAK_TRAINING_PATH=/workspace/LLaVA-OneVision-1.5 \
 DATA_PATH=LLaVA-OneVision-1.5-Mid-Training-Webdataset-Quick-Start \
 TOKENIZER_PATH=LLaVA-OneVision-1.5-4B-stage0 \
@@ -215,8 +224,12 @@ bash examples/llava_ov_1_5/quick_start/stage_1_alignment_llava_ov_4b.sh
 ### 4. Stage 1.5 Mid-Training 
 ```bash
 # ============================================================
-# LLaVA-OneVision 1.5 — Stage 1.5 Mid-Training
-# FIXME: Make stage_1_alignment_llava_ov_4b checkpoint available for release
+# Convert model to release format
+bash examples/llava_ov_1_5/convert/convert_4b_mcore_to_release.sh \
+stage_1_alignment_llava_ov_4b/iter_0005000/ \
+stage_1_alignment_llava_ov_4b_release 1 1
+# ============================================================
+# Launch
 AIAK_TRAINING_PATH=/workspace/LLaVA-OneVision-1.5 \
 DATA_PATH=LLaVA-OneVision-1.5-Mid-Training-Webdataset-Quick-Start \
 TOKENIZER_PATH=LLaVA-OneVision-1.5-4B-stage0 \
@@ -231,25 +244,17 @@ If you need to quickly get started, you can download LLaVA-NeXT-780K at [LLaVA-N
 
 ```bash
 # ============================================================
-# Mcore -> HF -> Mcore to convert model to Release format
-# 1. convert mcore to huggingface
-AIAK_TRAINING_PATH=/workspace/LLaVA-OneVision-1.5 \
-bash examples/llava_ov_1_5/convert/convert_4b_mcore_to_hf.sh stage_1.5_mid_training_llava_ov_4b/iter_0020000/ stage_1.5_mid_training_llava_ov_4b_huggingface 1 1
-# 2. convert huggingface to mcore with tp=1 pp=2 
-AIAK_TRAINING_PATH=/workspace/LLaVA-OneVision-1.5 \
-bash examples/llava_ov_1_5/convert/convert_4b_hf_to_mcore.sh stage_1.5_mid_training_llava_ov_4b_huggingface stage_1.5_mid_training_llava_ov_4b_huggingface_mcore_tp1_pp2 1 2
-
-
+# Convert model to release format
+bash examples/llava_ov_1_5/convert/convert_4b_mcore_to_release.sh \
+stage_1.5_mid_training_llava_ov_4b/iter_0020000/ \
+stage_1.5_mid_training_llava_ov_4b_release 1 1
 # ============================================================
-# LLaVA-OneVision 1.5 — Stage 2 Instruct-Training
-# FIXME: make stage_1.5_mid_training_llava_ov_4b checkpoint available for release
-
+# # Launch
 AIAK_TRAINING_PATH=/workspace/LLaVA-OneVision-1.5 \
 DATA_PATH=LLaVA-NeXT-780k-webdataset  \
 TOKENIZER_PATH=LLaVA-OneVision-1.5-4-stage0 \
-CHECKPOINT_PATH=stage_1.5_mid_training_llava_ov_4b_huggingface_mcore_tp1_pp2 \
+CHECKPOINT_PATH=stage_1.5_mid_training_llava_ov_4b_release \
 bash examples/llava_ov_1_5/quick_start/stage_2_instruct_llava_ov_4b.sh
-
 ```
 
 
@@ -263,16 +268,6 @@ LLaVA-OneVision-1.5-4B-2M-Mid-Training-780K-Instruct \
 ```
 
 
-### 7. Evaluation
-```
-# pip install git+https://github.com/EvolvingLMMs-Lab/lmms-eval.git  
-
-accelerate launch --num_processes=8 --main_process_port 12399 -m lmms_eval \
-    --model=llava_onevision1_5 \
-    --model_args=pretrained=lmms-lab/LLaVA-OneVision-1.5-8B-Instruct,attn_implementation=flash_attention_2,max_pixels=3240000 \
-    --tasks=mmmu_val,mmmu_pro_standard,mmbench_en_test,mmerealworld,mmerealworld_cn,ai2d,ai2d_no_mask,vstar_bench,chartqa,charxiv,docvqa_test,mathvista_testmini,mmstar,scienceqa \
-    --batch_size=1
-```
 
 ## Fully Reproducing Guide
 
