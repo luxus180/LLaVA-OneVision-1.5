@@ -40,6 +40,7 @@ def load_empty_model():
     tokenizer = Qwen2Tokenizer.from_pretrained('Qwen/Qwen2.5-VL-7B-Instruct', trust_remote_code=True, device_map={"": f"cuda:{CUDA_DEVICE}"})
     processor = AutoProcessor.from_pretrained("Qwen/Qwen2.5-VL-7B-Instruct")
     processor.image_processor.temporal_patch_size = 1
+    processor.image_processor.max_pixels = 1600*1600
     model = LLaVAOneVision1_5_ForConditionalGeneration(Llavaonevision1_5Config())
     return model, processor, tokenizer
 
@@ -399,7 +400,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Merge ViT and LLM models")
     parser.add_argument("--vit_path", type=str, default="DeepGlint-AI/rice-vit-large-patch14-560", help="Path to the ViT model")
     parser.add_argument("--llm_path", type=str, default="Qwen/Qwen3-8B-Base", help="Path to the LLM model")
-    parser.add_argument("--output_path", type=str, default="./checkpoints/merged/LLaVA-One-Vision-1.5-8B-init", help="Path to save the merged model")
+    parser.add_argument("--output_path", type=str, default="./checkpoints/merged/LLaVA-OneVision-1.5-8B-stage0", help="Path to save the merged model")
     parser.add_argument("--adapter_path", type=str, default="", help="Path to the Adapter model (optional)")
     parser.add_argument("--img_path", type=str, default="https://qianwen-res.oss-cn-beijing.aliyuncs.com/Qwen-VL/assets/demo.jpeg", help="Path to the image file")
     parser.add_argument("--sample_text", type=str, default="Hello, my dog is cute", help="Sample text for LLM consistency check")
