@@ -7,8 +7,8 @@ MBS="${4:-1}"
 GBS="${5:-8}"
 NSTEP="${6:-5000}"
 DATA_PATH=${DATA_PATH:-"/workspace/dataset/LLaVA-OneVision-1.5-Mid-Training-Webdataset-Quick-Start"}
-TOKENIZER_PATH=${TOKENIZER_PATH:-"/workspace/LLaVA-One-Vision-1.5/LLaVA-OneVision-1.5-8B-stage0"}
-CHECKPOINT_PATH=${CHECKPOINT_PATH:-"/workspace/LLaVA-One-Vision-1.5/LLaVA-OneVision-1.5-8B-stage0-mcore-TP1-PP1"}
+TOKENIZER_PATH=${TOKENIZER_PATH:-"/workspace/LLaVA-One-Vision-1.5/LLaVA-OneVision-1.5-4B-stage0"}
+CHECKPOINT_PATH=${CHECKPOINT_PATH:-"/workspace/LLaVA-One-Vision-1.5/LLaVA-OneVision-1.5-4B-stage0_mcore_tp1_pp1"}
 
 #! /bin/bash
 # The script needs to be run on at least 1 nodes.
@@ -97,7 +97,7 @@ else
 fi
 
 MODEL_ARGS=(
-    --model-name llava-ov-1.5-8b
+    --model-name llava-ov-1.5-4b
 )
 
 DATA_ARGS=(
