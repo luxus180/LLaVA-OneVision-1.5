@@ -16,8 +16,8 @@ Meticulously curated **pre-training and SFT data** with rigorous filtering and q
 
 3. **Ultra-Efficient Training Framework**
 Complete end-to-end training framework designed for maximum efficiency:
-- **$16K total budget** for full model training
-- **45% HFU efficiency** on A100 GPUs ($0.6 per GPU/Hour)
+- 16000 total budget for full model training on A100 GPUs  ($0.6 per GPU/Hour)
+- 45% HFU efficiency in 8k context length
 - Built on **MegatronLM** with support for **MoE**, **FP8**, and **long sequence parallelization**
 - Optimized codebase for cost-effective scaling
 
