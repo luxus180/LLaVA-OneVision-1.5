@@ -23,8 +23,6 @@ def check_caption(content: str) -> bool:
     return True
 
 def check_image(image_path) -> bool:
-    if not os.path.exists(image_path):
-        return False
     try:
         with open(image_path, "rb") as img_file:
             image_data = img_file.read()
