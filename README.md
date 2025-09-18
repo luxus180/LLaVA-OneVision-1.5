@@ -152,15 +152,16 @@ print(output_text)
 git clone https://github.com/EvolvingLMMs-Lab/LLaVA-OneVision-1.5.git
 cd LLaVA-OneVision-1.5
 
-# Build Docker image
 docker build -t llava_megatron:25.04 .
 
-# Run container
-docker run -d --gpus all \
+# Run container with -w to set working directory directly to the mounted volume
+docker run -it --gpus all \
     --ipc host --net host --privileged --cap-add IPC_LOCK \
-    --ulimit memlock=-1 --ulimit stack=67108864 \
-    --name "llava_container" \
-    llava_megatron:25.04
+    --ulimit memlock=-1 --ulimit stack=67108864 --rm \
+    -v $(pwd):/workspace/LLaVA-OneVision-1.5 \
+    -w /workspace/LLaVA-OneVision-1.5 \
+    --name "llava_megatron_container" \
+    llava_megatron:25.04 /bin/bash
 ```
 
 ### 2. Checkpoint and Format Conversion
@@ -168,26 +169,24 @@ docker run -d --gpus all \
 You have two options to get started with LLaVA-OneVision-1.5-stage-0:
 
 #### Option 1: Download pre-trained model from HuggingFace
-Download our `LLaVA-OneVision-1.5-8B-stage0` model directly from [HuggingFace](https://huggingface.co/lmms-lab/LLaVA-OneVision-1.5-8B-stage0).
+Download our `LLaVA-OneVision-1.5-4B-stage0` model directly from [HuggingFace](https://huggingface.co/lmms-lab/LLaVA-OneVision-1.5-4B-stage0).
 
 #### Option 2: Merge initial weights yourself
 Alternatively, you can merge the initial weights from the original ViT and LLM:
 ```bash
 python ds/merge_model.py \
 --vit_path DeepGlint-AI/rice-vit-large-patch14-560 \
---llm_path Qwen/Qwen3-8B-Base \
---output LLaVA-OneVision-1.5-8B-stage0
-
+--llm_path Qwen/Qwen3-4B-Instruct-2507 \
+--output LLaVA-OneVision-1.5-4B-stage0
 ```
 Note: When merging weights, the adapter component will be initialized with default values.
 
 Convert the model from HuggingFace format to Megatron format:
 
 ```bash
-AIAK_TRAINING_PATH=/workspace/LLaVA-OneVision-1.5 \
-bash examples/llava_ov_1_5/convert/convert_8b_hf_to_mcore.sh \
-LLaVA-OneVision-1.5-8B-stage0 \
-LLaVA-OneVision-1.5-8B-stage0-mcore-TP1-PP1 \
+AIAK_TRAINING_PATH=/workspace/LLaVA-OneVision-1.5 bash examples/llava_ov_1_5/convert/convert_4b_hf_to_mcore.sh \
+LLaVA-OneVision-1.5-4B-stage0 \
+LLaVA-OneVision-1.5-4B-stage0_mcore_tp1_pp1 \
 1 1
 ```
 
@@ -198,7 +197,6 @@ If you need to quickly get started, you can download our lightweight 2.5M packed
 
 ```bash
 # ============================================================
-# LLaVA-OneVision 1.5 — Stage 1 Alignment (8B) — Quick Start
 #
 # Required environment variables:
 #   AIAK_TRAINING_PATH  Root directory of the AIAK-Training-LLM project
@@ -209,21 +207,21 @@ If you need to quickly get started, you can download our lightweight 2.5M packed
 
 AIAK_TRAINING_PATH=/workspace/LLaVA-OneVision-1.5 \
 DATA_PATH=LLaVA-OneVision-1.5-Mid-Training-Webdataset-Quick-Start \
-TOKENIZER_PATH=LLaVA-OneVision-1.5-8B-stage0 \
-CHECKPOINT_PATH=LLaVA-OneVision-1.5-8B-stage0-mcore-TP1-PP1 \
-bash examples/llava_ov_1_5/quick_start/stage_1_alignment_llava_ov_8b.sh
+TOKENIZER_PATH=LLaVA-OneVision-1.5-4B-stage0 \
+CHECKPOINT_PATH=LLaVA-OneVision-1.5-4B-stage0_mcore_tp1_pp1 \
+bash examples/llava_ov_1_5/quick_start/stage_1_alignment_llava_ov_4b.sh
 ```
 
 ### 4. Stage 1.5 Mid-Training 
 ```bash
 # ============================================================
 # LLaVA-OneVision 1.5 — Stage 1.5 Mid-Training
-# FIXME: Make stage_1_alignment_llava_ov_8b checkpoint available for release
+# FIXME: Make stage_1_alignment_llava_ov_4b checkpoint available for release
 AIAK_TRAINING_PATH=/workspace/LLaVA-OneVision-1.5 \
 DATA_PATH=LLaVA-OneVision-1.5-Mid-Training-Webdataset-Quick-Start \
-TOKENIZER_PATH=LLaVA-OneVision-1.5-8B-stage0 \
-CHECKPOINT_PATH=stage_1_alignment_llava_ov_8b_release \
-bash examples/llava_ov_1_5/quick_start/stage_1.5_mid_training_llava_ov_8b.sh
+TOKENIZER_PATH=LLaVA-OneVision-1.5-4B-stage0 \
+CHECKPOINT_PATH=stage_1_alignment_llava_ov_4b_release \
+bash examples/llava_ov_1_5/quick_start/stage_1.5_mid_training_llava_ov_4b.sh
 ```
 
 
@@ -234,11 +232,11 @@ If you need to quickly get started, you can download LLaVA-NeXT-780K at [LLaVA-N
 ```bash
 # convert mcore to huggingface
 AIAK_TRAINING_PATH=/workspace/LLaVA-OneVision-1.5 \
-bash examples/llava_ov_1_5/convert/convert_8b_mcore_to_hf.sh stage_1.5_mid_training_llava_ov_8b/iter_0020000/ stage_1.5_mid_training_llava_ov_8b_huggingface 1 1
+bash examples/llava_ov_1_5/convert/convert_4b_mcore_to_hf.sh stage_1.5_mid_training_llava_ov_4b/iter_0020000/ stage_1.5_mid_training_llava_ov_4b_huggingface 1 1
 
 # convert huggingface to mcore with tp=1 pp=2 
 AIAK_TRAINING_PATH=/workspace/LLaVA-OneVision-1.5 \
-bash examples/llava_ov_1_5/convert/convert_8b_hf_to_mcore.sh stage_1.5_mid_training_llava_ov_8b_huggingface stage_1.5_mid_training_llava_ov_8b_huggingface_mcore_tp1_pp2 1 2
+bash examples/llava_ov_1_5/convert/convert_4b_hf_to_mcore.sh stage_1.5_mid_training_llava_ov_4b_huggingface stage_1.5_mid_training_llava_ov_4b_huggingface_mcore_tp1_pp2 1 2
 
 
 # ============================================================
@@ -247,9 +245,9 @@ bash examples/llava_ov_1_5/convert/convert_8b_hf_to_mcore.sh stage_1.5_mid_train
 
 AIAK_TRAINING_PATH=/workspace/LLaVA-OneVision-1.5 \
 DATA_PATH=LLaVA-NeXT-780k-webdataset  \
-TOKENIZER_PATH=LLaVA-OneVision-1.5-8B-stage0 \
-CHECKPOINT_PATH=stage_1.5_mid_training_llava_ov_8b_huggingface_mcore_tp1_pp2 \
-bash examples/llava_ov_1_5/quick_start/stage_2_instruct_llava_ov_8b.sh
+TOKENIZER_PATH=LLaVA-OneVision-1.5-4-stage0 \
+CHECKPOINT_PATH=stage_1.5_mid_training_llava_ov_4b_huggingface_mcore_tp1_pp2 \
+bash examples/llava_ov_1_5/quick_start/stage_2_instruct_llava_ov_4b.sh
 
 ```
 
@@ -257,9 +255,9 @@ bash examples/llava_ov_1_5/quick_start/stage_2_instruct_llava_ov_8b.sh
 ### 6. Convert mcore to huggingface
 ```bash
 AIAK_TRAINING_PATH=/workspace/LLaVA-OneVision-1.5 \
-bash examples/llava_ov_1_5/convert/convert_8b_mcore_to_hf.sh \
+bash examples/llava_ov_1_5/convert/convert_4b_mcore_to_hf.sh \
 <Your Checkpoint Path> \
-LLaVA-OneVision-1.5-8B-2M-Mid-Training-780K-Instruct \
+LLaVA-OneVision-1.5-4B-2M-Mid-Training-780K-Instruct \
 1 1
 ```
 

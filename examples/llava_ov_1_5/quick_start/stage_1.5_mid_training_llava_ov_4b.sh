@@ -1,14 +1,14 @@
 AIAK_TRAINING_PATH="${AIAK_TRAINING_PATH:-/workspace/LLaVA-OneVision-1.5}"
 AIAK_MAGATRON_PATH="${AIAK_MAGATRON_PATH:-${AIAK_TRAINING_PATH%/}/aiak_megatron}"
 TP="${1:-1}"
-PP="${2:-2}"
+PP="${2:-1}"
 SEQ_LEN="${3:-32768}"
 MBS="${4:-1}"
-GBS="${5:-224}"
-NSTEP="${6:-3500}"
-DATA_PATH=${DATA_PATH:-"/workspace/dataset/LLaVA-NeXT-780k-webdataset"}
-TOKENIZER_PATH=${TOKENIZER_PATH:-"/workspace/LLaVA-One-Vision-1.5/LLaVA-OneVision-1.5-8B-stage0"}
-CHECKPOINT_PATH=${CHECKPOINT_PATH:-"/workspace/LLaVA-One-Vision-1.5/stage_1_alignment_llava_ov_8b"}
+GBS="${5:-8}"
+NSTEP="${6:-20000}"
+DATA_PATH=${DATA_PATH:-"/workspace/dataset/LLaVA-OneVision-1.5-Mid-Training-Webdataset-Quick-Start"}
+TOKENIZER_PATH=${TOKENIZER_PATH:-"/workspace/LLaVA-One-Vision-1.5/LLaVA-OneVision-1.5-4B-stage0"}
+CHECKPOINT_PATH=${CHECKPOINT_PATH:-"/workspace/LLaVA-One-Vision-1.5/stage_1_alignment_llava_ov_4b"}
 
 #! /bin/bash
 # The script needs to be run on at least 1 nodes.
@@ -97,7 +97,7 @@ else
 fi
 
 MODEL_ARGS=(
-    --model-name llava-ov-1.5-8b
+    --model-name llava-ov-1.5-4b
 )
 
 DATA_ARGS=(
@@ -111,7 +111,6 @@ DATA_ARGS=(
 )
 
 TRAINING_ARGS=(
-    --image-resolution 1000
     --training-phase sft
     --trainable-modules language_model adapter vision_model
     --seq-length "${SEQ_LEN}"
@@ -122,10 +121,10 @@ TRAINING_ARGS=(
     --lr 1.0e-5
     --min-lr 1.0e-6
     --clip-grad 1.0
-    --weight-decay 0
+    --weight-decay 0.01
     --optimizer adam
     --adam-beta1 0.9
-    --adam-beta2 0.99
+    --adam-beta2 0.95
     --adam-eps 1e-05
     --norm-epsilon 1e-6
     --train-iters "$NSTEP"
@@ -143,7 +142,7 @@ TRAINING_ARGS=(
     --ckpt-fully-parallel-load
     --recompute-granularity full
     --recompute-method uniform
-    --recompute-num-layers 1
+    --recompute-num-layers 4
 )
 
 MODEL_PARALLEL_ARGS=(
@@ -170,8 +169,8 @@ fi
 TM=$(date "+%Y-%m-%d_%H:%M:%S")
 logfile="${SAVE_CKPT_PATH}/run_${TM}_tp${TP}_pp${PP}_seqlen${SEQ_LEN}_mbs${MBS}_gbs${GBS}_${NSTEP}steps.log"
 
-export OFFLINE_PACKED_DATA='0'
-export OFFLINE_PACKING_VQA='0'
+export OFFLINE_PACKED_DATA='1'
+export OFFLINE_PACKING_VQA='1'
 export PYTORCH_CUDA_ALLOC_CONF=max_split_size_mb:128
 export PYTORCH_CUDA_ALLOC_CONF=garbage_collection_threshold:0.72
 
