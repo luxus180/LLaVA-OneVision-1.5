@@ -1,6 +1,6 @@
 from llavaonevision1_5.configuration_llavaonevision1_5 import Llavaonevision1_5Config
 from llavaonevision1_5.modeling_llavaonevision1_5 import LLaVAOneVision1_5_ForConditionalGeneration
-from transformers import Qwen2Tokenizer, AutoProcessor
+from transformers import Qwen2Tokenizer, AutoProcessor, AutoConfig
 from transformers import MLCDVisionModel
 from transformers import CLIPImageProcessor
 from transformers import Qwen2VLImageProcessor, AutoProcessor
@@ -35,13 +35,16 @@ def create_test_image():
     draw.text((100, 100), "TEST", fill='white')
     return img
 
-def load_empty_model():
+def load_empty_model(llm_path):
     print("Loading tokenizer and processor from Qwen2.5-VL and empty model...")
     tokenizer = Qwen2Tokenizer.from_pretrained('Qwen/Qwen2.5-VL-7B-Instruct', trust_remote_code=True, device_map={"": f"cuda:{CUDA_DEVICE}"})
     processor = AutoProcessor.from_pretrained("Qwen/Qwen2.5-VL-7B-Instruct")
     processor.image_processor.temporal_patch_size = 1
     processor.image_processor.max_pixels = 1600*1600
-    model = LLaVAOneVision1_5_ForConditionalGeneration(Llavaonevision1_5Config())
+    llava_ov_config = Llavaonevision1_5Config()
+    llm_config = AutoConfig.from_pretrained(llm_path, trust_remote_code=True)
+    llava_ov_config.text_config.update(llm_config.to_dict())
+    model = LLaVAOneVision1_5_ForConditionalGeneration(llava_ov_config)
     return model, processor, tokenizer
 
 def load_vit_weights(model, vit_path):
@@ -368,7 +371,7 @@ def main(args):
     
     
     # 1. load empty model
-    model, processor, tokenizer = load_empty_model()
+    model, processor, tokenizer = load_empty_model(llm_path)
     model.to(dtype=torch.float32)
     
     pretrain_weights = {}

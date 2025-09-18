@@ -177,7 +177,7 @@ class LLaVAOneVision1_5_TextConfig(PretrainedConfig):
         initializer_range=0.02,
         rms_norm_eps=1e-06,
         use_cache=True,
-        tie_word_embeddings=True,
+        tie_word_embeddings=False,
         rope_theta=5000000.0,
         attention_bias=False,
         use_sliding_window=False,
