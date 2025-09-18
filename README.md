@@ -230,18 +230,19 @@ bash examples/llava_ov_1_5/quick_start/stage_1.5_mid_training_llava_ov_4b.sh
 If you need to quickly get started, you can download LLaVA-NeXT-780K at [LLaVA-NeXT-780K Dataset Link](https://huggingface.co/datasets/lmms-lab/LLaVA-NeXT-780k-webdataset).
 
 ```bash
-# convert mcore to huggingface
+# ============================================================
+# Mcore -> HF -> Mcore to convert model to Release format
+# 1. convert mcore to huggingface
 AIAK_TRAINING_PATH=/workspace/LLaVA-OneVision-1.5 \
 bash examples/llava_ov_1_5/convert/convert_4b_mcore_to_hf.sh stage_1.5_mid_training_llava_ov_4b/iter_0020000/ stage_1.5_mid_training_llava_ov_4b_huggingface 1 1
-
-# convert huggingface to mcore with tp=1 pp=2 
+# 2. convert huggingface to mcore with tp=1 pp=2 
 AIAK_TRAINING_PATH=/workspace/LLaVA-OneVision-1.5 \
 bash examples/llava_ov_1_5/convert/convert_4b_hf_to_mcore.sh stage_1.5_mid_training_llava_ov_4b_huggingface stage_1.5_mid_training_llava_ov_4b_huggingface_mcore_tp1_pp2 1 2
 
 
 # ============================================================
 # LLaVA-OneVision 1.5 — Stage 2 Instruct-Training
-# FIXME: make stage_1.5_mid_training_llava_ov_8b checkpoint available for release
+# FIXME: make stage_1.5_mid_training_llava_ov_4b checkpoint available for release
 
 AIAK_TRAINING_PATH=/workspace/LLaVA-OneVision-1.5 \
 DATA_PATH=LLaVA-NeXT-780k-webdataset  \
