@@ -21,9 +21,9 @@ Complete end-to-end training framework designed for maximum efficiency:
 - Built on **MegatronLM** with support for **MoE**, **FP8**, and **long sequence parallelization**
 - Optimized codebase for cost-effective scaling
 
-- - [ ] Data load balancing optimization
+- - [ ] Better data load balancing optimization
 - - [ ] More efficient multimodal model parallelism strategy
-- - [ ] FP8 training support
+- - [ ] FP8 training support cases/examples
 
 4. **Fully Open Framework** for community access and reproducibility:
 - ✅ High-quality pre-training & SFT data
@@ -143,17 +143,9 @@ print(output_text)
 ```
 
 
-## Pre-Training Guide
+## Quick Start Guide
 
-### 1. Data Preprocessing
-
-To improve model training efficiency, we implement offline sample packing:
-
-1. Download the [lmms-lab/LLaVA-One-Vision-1.5-Mid-Training-85M dataset](https://huggingface.co/datasets/lmms-lab/LLaVA-One-Vision-1.5-Mid-Training-85M)
-2. Pack the pre-training data into webdataset format
-3. For detailed instructions, refer to [examples/llava_ov_1_5/sample_packing/README.md](examples/llava_ov_1_5/sample_packing/README.md)
-
-### 2. Training Environment Setup
+### 1. Training Environment Setup
 
 ```bash
 # Clone repository
@@ -171,7 +163,7 @@ docker run -d --gpus all \
     llava_megatron:25.04
 ```
 
-### 3. Checkpoint and Format Conversion
+### 2. Checkpoint and Format Conversion
 
 You have two options to get started with LLaVA-OneVision-1.5-stage-0:
 
@@ -199,7 +191,7 @@ LLaVA-OneVision-1.5-8B-stage0-mcore-TP1-PP1 \
 1 1
 ```
 
-### 4. Stage 1 Alignment-Training
+### 3. Stage 1 Alignment-Training
 
 If you need to quickly get started, you can download our lightweight 2.5M packed subset at [Quick Start Dataset Link](https://huggingface.co/datasets/lmms-lab/LLaVA-OneVision-1.5-Mid-Training-Webdataset-Quick-Start).
 
@@ -222,7 +214,7 @@ CHECKPOINT_PATH=LLaVA-OneVision-1.5-8B-stage0-mcore-TP1-PP1 \
 bash examples/llava_ov_1_5/quick_start/stage_1_alignment_llava_ov_8b.sh
 ```
 
-### 5. Stage 1.5 Mid-Training 
+### 4. Stage 1.5 Mid-Training 
 ```bash
 # ============================================================
 # LLaVA-OneVision 1.5 — Stage 1.5 Mid-Training
@@ -235,7 +227,7 @@ bash examples/llava_ov_1_5/quick_start/stage_1.5_mid_training_llava_ov_8b.sh
 ```
 
 
-### 6. Stage 2 Instruct-Training
+### 5. Stage 2 Instruct-Training
 
 If you need to quickly get started, you can download LLaVA-NeXT-780K at [LLaVA-NeXT-780K Dataset Link](https://huggingface.co/datasets/lmms-lab/LLaVA-NeXT-780k-webdataset).
 
@@ -262,8 +254,7 @@ bash examples/llava_ov_1_5/quick_start/stage_2_instruct_llava_ov_8b.sh
 ```
 
 
-
-### 7. Convert mcore to huggingface
+### 6. Convert mcore to huggingface
 ```bash
 AIAK_TRAINING_PATH=/workspace/LLaVA-OneVision-1.5 \
 bash examples/llava_ov_1_5/convert/convert_8b_mcore_to_hf.sh \
@@ -273,6 +264,17 @@ LLaVA-OneVision-1.5-8B-2M-Mid-Training-780K-Instruct \
 ```
 
 
+## Fully Reproducing Guide
+
+### 1. Data Processing
+To improve model training efficiency, we implement offline sample packing:
+
+1. Download the [lmms-lab/LLaVA-One-Vision-1.5-Mid-Training-85M dataset](https://huggingface.co/datasets/lmms-lab/LLaVA-One-Vision-1.5-Mid-Training-85M)
+2. Pack the pre-training data into webdataset format, For detailed instructions, refer to [examples/llava_ov_1_5/sample_packing/README.md](examples/llava_ov_1_5/sample_packing/README.md)
+
+
+### 2. Training
+coming
 
 ## Roadmaps
 
