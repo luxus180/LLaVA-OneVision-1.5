@@ -240,7 +240,7 @@ bash examples/llava_ov_1_5/quick_start/stage_1.5_mid_training_llava_ov_4b.sh
 
 ### 5. Stage 2 Instruct-Training
 
-Download LLaVA-NeXT-780K at [LLaVA-NeXT-780K Dataset Link](https://huggingface.co/datasets/lmms-lab/LLaVA-NeXT-780k-webdataset).
+Download LLaVA-NeXT-780k-webdataset at [LLaVA-NeXT-780K Dataset Link](https://huggingface.co/datasets/lmms-lab/LLaVA-NeXT-780k-webdataset).
 
 ```bash
 # ============================================================
