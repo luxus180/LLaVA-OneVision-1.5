@@ -263,6 +263,17 @@ LLaVA-OneVision-1.5-4B-2M-Mid-Training-780K-Instruct \
 ```
 
 
+### 7. Evaluation
+```
+# pip install git+https://github.com/EvolvingLMMs-Lab/lmms-eval.git  
+
+accelerate launch --num_processes=8 --main_process_port 12399 -m lmms_eval \
+    --model=llava_onevision1_5 \
+    --model_args=pretrained=lmms-lab/LLaVA-OneVision-1.5-8B-Instruct,attn_implementation=flash_attention_2,max_pixels=3240000 \
+    --tasks=mmmu_val,mmmu_pro_standard,mmbench_en_test,mmerealworld,mmerealworld_cn,ai2d,ai2d_no_mask,vstar_bench,chartqa,charxiv,docvqa_test,mathvista_testmini,mmstar,scienceqa \
+    --batch_size=1
+```
+
 ## Fully Reproducing Guide
 
 ### 1. Data Processing
