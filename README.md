@@ -25,7 +25,7 @@ Complete end-to-end training framework designed for maximum efficiency:
 - - [ ] More efficient multimodal model parallelism strategy
 - - [ ] FP8 training support
 
-1. **Fully Open Framework** for community access and reproducibility:
+4. **Fully Open Framework** for community access and reproducibility:
 - ✅ High-quality pre-training & SFT data
 - ✅ Complete training framework & code
 - ✅ Training recipes & configurations
