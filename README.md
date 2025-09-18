@@ -203,7 +203,7 @@ LLaVA-OneVision-1.5-4B-stage0_mcore_tp1_pp1 \
 
 ### 3. Stage 1 Alignment-Training
 
-If you need to quickly get started, you can download our lightweight 2.5M packed subset at [Quick Start Dataset Link](https://huggingface.co/datasets/lmms-lab/LLaVA-OneVision-1.5-Mid-Training-Webdataset-Quick-Start).
+Download our lightweight packed subset from [Quick Start Webdataset](https://huggingface.co/datasets/lmms-lab/LLaVA-OneVision-1.5-Mid-Training-Webdataset-Quick-Start).
 
 
 ```bash
@@ -240,7 +240,7 @@ bash examples/llava_ov_1_5/quick_start/stage_1.5_mid_training_llava_ov_4b.sh
 
 ### 5. Stage 2 Instruct-Training
 
-If you need to quickly get started, you can download LLaVA-NeXT-780K at [LLaVA-NeXT-780K Dataset Link](https://huggingface.co/datasets/lmms-lab/LLaVA-NeXT-780k-webdataset).
+Download LLaVA-NeXT-780K at [LLaVA-NeXT-780K Dataset Link](https://huggingface.co/datasets/lmms-lab/LLaVA-NeXT-780k-webdataset).
 
 ```bash
 # ============================================================
