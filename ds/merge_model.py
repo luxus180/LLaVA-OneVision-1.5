@@ -1,4 +1,4 @@
-from llavaonevision1_5.configuration_llavaonevision1_5_8b import Llavaonevision1_5Config
+from llavaonevision1_5.configuration_llavaonevision1_5 import Llavaonevision1_5Config
 from llavaonevision1_5.modeling_llavaonevision1_5 import LLaVAOneVision1_5_ForConditionalGeneration
 from transformers import Qwen2Tokenizer, AutoProcessor
 from transformers import MLCDVisionModel
@@ -399,8 +399,8 @@ def main(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Merge ViT and LLM models")
     parser.add_argument("--vit_path", type=str, default="DeepGlint-AI/rice-vit-large-patch14-560", help="Path to the ViT model")
-    parser.add_argument("--llm_path", type=str, default="Qwen/Qwen3-8B-Base", help="Path to the LLM model")
-    parser.add_argument("--output_path", type=str, default="./checkpoints/merged/LLaVA-OneVision-1.5-8B-stage0", help="Path to save the merged model")
+    parser.add_argument("--llm_path", type=str, default="Qwen/Qwen3-4B-Instruct-2507", help="Path to the LLM model")
+    parser.add_argument("--output_path", type=str, default="./checkpoints/merged/LLaVA-OneVision-1.5-4B-stage0", help="Path to save the merged model")
     parser.add_argument("--adapter_path", type=str, default="", help="Path to the Adapter model (optional)")
     parser.add_argument("--img_path", type=str, default="https://qianwen-res.oss-cn-beijing.aliyuncs.com/Qwen-VL/assets/demo.jpeg", help="Path to the image file")
     parser.add_argument("--sample_text", type=str, default="Hello, my dog is cute", help="Sample text for LLM consistency check")
