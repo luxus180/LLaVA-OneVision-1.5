@@ -275,11 +275,11 @@ LLaVA-OneVision-1.5-4B-2M-Mid-Training-780K-Instruct \
 To improve model training efficiency, we implement offline sample packing:
 
 1. Download the [lmms-lab/LLaVA-One-Vision-1.5-Mid-Training-85M dataset](https://huggingface.co/datasets/lmms-lab/LLaVA-One-Vision-1.5-Mid-Training-85M)
-2. Pack the pre-training data into webdataset format, For detailed instructions, refer to [examples/llava_ov_1_5/sample_packing/README.md](examples/llava_ov_1_5/sample_packing/README.md)
+2. Pack the mid-training data into webdataset format, For detailed instructions, refer to [examples/llava_ov_1_5/sample_packing/README.md](examples/llava_ov_1_5/sample_packing/README.md)
 
 
 ### 2. Training
-coming
+More detailed reproduction steps for the complete process will be provided after the dataset upload is completed.
 
 ## Roadmaps
 
