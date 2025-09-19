@@ -251,8 +251,8 @@ stage_1.5_mid_training_llava_ov_4b_release 1 1
 # ============================================================
 # # Launch
 AIAK_TRAINING_PATH=/workspace/LLaVA-OneVision-1.5 \
-DATA_PATH=LLaVA-NeXT-780k-webdataset  \
-TOKENIZER_PATH=LLaVA-OneVision-1.5-4-stage0 \
+DATA_PATH=LLaVA-NeXT-780k-Webdataset \
+TOKENIZER_PATH=LLaVA-OneVision-1.5-4B-stage0 \
 CHECKPOINT_PATH=stage_1.5_mid_training_llava_ov_4b_release \
 bash examples/llava_ov_1_5/quick_start/stage_2_instruct_llava_ov_4b.sh
 ```
@@ -262,12 +262,20 @@ bash examples/llava_ov_1_5/quick_start/stage_2_instruct_llava_ov_4b.sh
 ```bash
 AIAK_TRAINING_PATH=/workspace/LLaVA-OneVision-1.5 \
 bash examples/llava_ov_1_5/convert/convert_4b_mcore_to_hf.sh \
-<Your Checkpoint Path> \
-LLaVA-OneVision-1.5-4B-2M-Mid-Training-780K-Instruct \
+stage_2_instruct_llava_ov_4b/iter_0003500 \
+LLaVA-OneVision-1.5-4B-3M-Mid-Training-780K-Instruct \
 1 1
+# Copy non-model files (e.g., tokenizer config) to the new directory
+find LLaVA-OneVision-1.5-4B-stage0/ -type f -not -iname '*safetensors*' -exec cp {}  LLaVA-OneVision-1.5-4B-3M-Mid-Training-780K-Instruct/ ';'
 ```
 
-
+### 7. Evaluation
+```bash
+# pip install git+https://github.com/EvolvingLMMs-Lab/lmms-eval.git
+CUDA_VISIBLE_DEVICES=4,5,6,7 accelerate launch \
+--num_processes=4 --main_process_port 12399 -m lmms_eval --model=llava_onevision1_5 --batch_size=1 --tasks=mme \
+--model_args=pretrained=/workspace/LLaVA-OneVision-1.5/LLaVA-OneVision-1.5-4B-3M-Mid-Training-780K-Instruct,max_pixels=3240000
+```
 
 ## Fully Reproducing Guide
 
