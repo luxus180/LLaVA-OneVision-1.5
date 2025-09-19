@@ -203,7 +203,7 @@ LLaVA-OneVision-1.5-4B-stage0_mcore_tp1_pp1 \
 
 ### 3. Stage 1 Alignment-Training
 
-Download our lightweight packed subset from [Quick Start Webdataset](https://huggingface.co/datasets/lmms-lab/LLaVA-OneVision-1.5-Mid-Training-Webdataset-Quick-Start).
+Download LLaVA from [LLaVA-558K-Webdataset](https://huggingface.co/datasets/lmms-lab/LLaVA-558K-Webdataset).
 
 
 ```bash
@@ -215,23 +215,26 @@ Download our lightweight packed subset from [Quick Start Webdataset](https://hug
 #   CHECKPOINT_PATH     Megatron-formatted checkpoint directory (e.g., mcore TP1/PP1)
 #   SAVE_CKPT_PATH      Output directory for saving training checkpoints
 AIAK_TRAINING_PATH=/workspace/LLaVA-OneVision-1.5 \
-DATA_PATH=LLaVA-OneVision-1.5-Mid-Training-Webdataset-Quick-Start \
+DATA_PATH=LLaVA-558K-Webdataset \
 TOKENIZER_PATH=LLaVA-OneVision-1.5-4B-stage0 \
 CHECKPOINT_PATH=LLaVA-OneVision-1.5-4B-stage0_mcore_tp1_pp1 \
 bash examples/llava_ov_1_5/quick_start/stage_1_alignment_llava_ov_4b.sh
 ```
 
 ### 4. Stage 1.5 Mid-Training 
+
+Download our lightweight packed subset from [LLaVA-OneVision-1.5-Mid-Training-Quick-Start-3M-Webdataset](https://huggingface.co/datasets/lmms-lab/LLaVA-OneVision-1.5-Mid-Training-Webdataset-Quick-Start-3M).
+
 ```bash
 # ============================================================
 # Convert model to release format
 bash examples/llava_ov_1_5/convert/convert_4b_mcore_to_release.sh \
-stage_1_alignment_llava_ov_4b/iter_0005000/ \
+stage_1_alignment_llava_ov_4b/iter_0002500/ \
 stage_1_alignment_llava_ov_4b_release 1 1
 # ============================================================
 # Launch
 AIAK_TRAINING_PATH=/workspace/LLaVA-OneVision-1.5 \
-DATA_PATH=LLaVA-OneVision-1.5-Mid-Training-Webdataset-Quick-Start \
+DATA_PATH=LLaVA-OneVision-1.5-Mid-Training-Quick-Start-3M-Webdataset \
 TOKENIZER_PATH=LLaVA-OneVision-1.5-4B-stage0 \
 CHECKPOINT_PATH=stage_1_alignment_llava_ov_4b_release \
 bash examples/llava_ov_1_5/quick_start/stage_1.5_mid_training_llava_ov_4b.sh
@@ -240,7 +243,7 @@ bash examples/llava_ov_1_5/quick_start/stage_1.5_mid_training_llava_ov_4b.sh
 
 ### 5. Stage 2 Instruct-Training
 
-Download LLaVA-NeXT-780k-webdataset at [LLaVA-NeXT-780K Dataset Link](https://huggingface.co/datasets/lmms-lab/LLaVA-NeXT-780k-webdataset).
+Download LLaVA-NeXT-780k-webdataset at [LLaVA-NeXT-780K Dataset](https://huggingface.co/datasets/lmms-lab/LLaVA-NeXT-780k-webdataset).
 
 ```bash
 # ============================================================

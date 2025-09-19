@@ -7,8 +7,8 @@ MBS="${4:-1}"
 GBS="${5:-224}"
 NSTEP="${6:-3500}"
 DATA_PATH=${DATA_PATH:-"/workspace/dataset/LLaVA-NeXT-780k-webdataset"}
-TOKENIZER_PATH=${TOKENIZER_PATH:-"/workspace/LLaVA-One-Vision-1.5/LLaVA-OneVision-1.5-4B-stage0"}
-CHECKPOINT_PATH=${CHECKPOINT_PATH:-"/workspace/LLaVA-One-Vision-1.5/stage_1.5_mid_training_llava_ov_4b_release"}
+TOKENIZER_PATH=${TOKENIZER_PATH:-"/workspace/LLaVA-OneVision-1.5/LLaVA-OneVision-1.5-4B-stage0"}
+CHECKPOINT_PATH=${CHECKPOINT_PATH:-"/workspace/LLaVA-OneVision-1.5/stage_1.5_mid_training_llava_ov_4b_release"}
 
 #! /bin/bash
 # The script needs to be run on at least 1 nodes.
