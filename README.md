@@ -158,7 +158,7 @@ accelerate launch --num_processes=8 --main_process_port 12399 -m lmms_eval \
 
 ### 1.🐳 Docker (Recommended)
 
-We strongly recommend using the previous releases of [PyTorch NGC Container](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch) rather than the latest one for optimal compatibility with Megatron Core release and testing.
+We strongly recommend using the docker environment for a seamless experience. The following instructions are tailored for the A100 80GB GPU environment.
 
 
 ```bash
@@ -341,3 +341,5 @@ We also thank the maintainers and contributors of the following open-source proj
 - lmms-eval: A standardized evaluation framework for Large Multimodal Models — [lmms-eval](https://github.com/EvolvingLMMs-Lab/lmms-eval)
 - Megatron-LM: Efficient, scalable training for large language models — [Megatron-LM](https://github.com/NVIDIA/Megatron-LM)
 - Qwen2.5-VL: Strong vision-language foundation model — [Qwen2.5-VL](https://github.com/QwenLM/Qwen2.5-VL)
+- Qwen3: Next-generation Qwen LLM — [Qwen](https://github.com/QwenLM/Qwen)
+- MetaCLIP: Scalable contrastive pretraining — [MetaCLIP](https://github.com/facebookresearch/MetaCLIP)
