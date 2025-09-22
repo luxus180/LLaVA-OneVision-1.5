@@ -395,8 +395,7 @@ def main(args):
     validate_llm_consistency(model, llm_path, sample_text)
 
     # 6. save merged model
-    save_merged_model(model, output_path, tokenizer, processor)
-    
+    save_merged_model(model.to(dtype=torch.bfloat16), output_path, tokenizer, processor)
     print("Model merging process completed!")
 
 if __name__ == "__main__":
