@@ -1,9 +1,20 @@
-# LLaVA-OneVision-1.5: Fully Open Framework for Democratized Multimodal Training
+<h1 align="center">LLaVA-OneVision-1.5</h1>
 
+<p align="center">
+  <strong>Fully Open Framework for Democratized Multimodal Training</strong>
+</p>
 
-[🤗 Mid-Training-Data (Uploading!)](https://huggingface.co/datasets/lmms-lab/LLaVA-One-Vision-1.5-Mid-Training-85M) | 
-[🤗 Insturct-Data (Uploading!)](https://huggingface.co/datasets/lmms-lab/LLaVA-One-Vision-1.5-Insturct-26M) 
+<div align="center">
 
+🤗 **[Models and Datasets](https://huggingface.co/collections/lmms-lab/llava-onevision-15-68d385fe73b50bd22de23713)** |
+🖥️ **[Demo](https://huggingface.co/spaces/lmms-lab/LLaVA-OneVision-1.5)** |
+📄 **[Tech Report(coming soon)]**
+
+</div>
+
+---
+
+## Introduction
 **LLaVA-OneVision1.5** introduces a novel family of **fully open-source** Large Multimodal Models (LMMs) that achieves **state-of-the-art performance**  with substantially **lower cost** through training on **native resolution** images.
 
 1. **Superior Performance**
@@ -33,7 +44,7 @@ Complete end-to-end training framework designed for maximum efficiency:
 - ✅ Comprehensive training logs & metrics
 
 
-## Model
+## Models
 
 | Model                  | #Vision Param | #Language Param | #Total Param | HF Link                                                                      |
 |------------------------|---------------|-----------------|--------------|------------------------------------------------------------------------------|
@@ -41,7 +52,7 @@ Complete end-to-end training framework designed for maximum efficiency:
 | LLaVA-OV-1.5-8B-Instruct      | 0.3B          | 8.2B            | 8.5B         | [🤗 link](https://huggingface.co/lmms-lab/LLaVA-OneVision-1.5-8B-Instruct) |
 
 
-## Dataset
+## Datasets
 
 ![Dataset Visualization](asset/dataset.jpg)
 
