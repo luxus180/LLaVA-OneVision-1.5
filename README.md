@@ -313,6 +313,13 @@ Q4 2025 Key Deliverables:
 1. **Ultra-efficient MoE Training**  
 2. **Full Video Input LLM**  
 
+
+## Contributors
+Thanks so much to all of our amazing contributors!
+
+<!-- readme: collaborators,contributors -start -->
+<!-- readme: collaborators,contributors -end -->
+
 ## Citation
 
 If you find *LLaVA-OneVision-1.5* useful in your research, please consider to cite the following related papers:
