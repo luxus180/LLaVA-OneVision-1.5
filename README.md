@@ -318,6 +318,54 @@ Q4 2025 Key Deliverables:
 Thanks so much to all of our amazing contributors!
 
 <!-- readme: collaborators,contributors -start -->
+<table>
+	<tbody>
+		<tr>
+            <td align="center">
+                <a href="https://github.com/anxiangsir">
+                    <img src="https://avatars.githubusercontent.com/u/31175974?v=4" width="100;" alt="anxiangsir"/>
+                    <br />
+                    <sub><b>Xiang An</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/yiyexy">
+                    <img src="https://avatars.githubusercontent.com/u/35927125?v=4" width="100;" alt="yiyexy"/>
+                    <br />
+                    <sub><b>yiyexy</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/chengzheng345">
+                    <img src="https://avatars.githubusercontent.com/u/209475443?v=4" width="100;" alt="chengzheng345"/>
+                    <br />
+                    <sub><b>chengzheng345</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/mathCrazyy">
+                    <img src="https://avatars.githubusercontent.com/u/20607153?v=4" width="100;" alt="mathCrazyy"/>
+                    <br />
+                    <sub><b>chunshengwu</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/yunglechao">
+                    <img src="https://avatars.githubusercontent.com/u/7631185?v=4" width="100;" alt="yunglechao"/>
+                    <br />
+                    <sub><b>yonglezhao</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/RobitYadda">
+                    <img src="https://avatars.githubusercontent.com/u/6811311?v=4" width="100;" alt="RobitYadda"/>
+                    <br />
+                    <sub><b>闫梓祯@智能引擎</b></sub>
+                </a>
+            </td>
+		</tr>
+	<tbody>
+</table>
 <!-- readme: collaborators,contributors -end -->
 
 ## Citation
