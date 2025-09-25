@@ -94,9 +94,9 @@ Key Parameters
 | :--- | :--- | :--- | :--- |
 | **`--output_dir`** | `str` | Yes | The directory to save the final WebDataset files |
 | **`--json_file`** | `str` | Yes | The path to the main JSON file containing the dataset metadata. |
-| **`--image_dir`** | `str` | No | The directory path containing the image files. Required if `media` is `image` or `mix`. |
-| **`--video_dir`** | `str` | No | The directory path containing the video files. Required if `media` is `video` or `mix`. |
-| **`--media`** | `str` | No | The type of media to process: `image`, `video`, or `mix` (default: `mix`). |
+| **`--image_dir`** | `str` | No | The directory path containing the image files. Required if **media** is **image** or **mix**. |
+| **`--video_dir`** | `str` | No | The directory path containing the video files. Required if **media** is **image** or **mix**. |
+| **`--media`** | `str` | No | The type of media to process: **image**, **video**, or **mix** (default: **mix**). |
 | **`--maxcount`** | `int` | No | Maximum number of samples per WebDataset shard (default: $10000$). |
 | **`--maxsize`** | `int` | No | Maximum byte size of each shard (default: $3$ GB). |
-| **`--columns_messages`** | `str` | No | The key in the JSON entry that holds the conversational messages (default: `messages`). |
+| **`--columns_messages`** | `str` | No | The key in the JSON entry that holds the conversational messages (default: **messages**). |
