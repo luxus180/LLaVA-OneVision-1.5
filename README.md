@@ -67,8 +67,11 @@ Meticulously curated **pre-training and SFT data** with rigorous filtering and q
 ## Datasets
 
 ![Dataset Visualization](asset/dataset.jpg)
-<p align="center"><b></b> **(a)** The vocabulary coverage proportion in the LLaVA-OneVision-1.5-Mid-Traning dataset
-before and after concept balancing. **(b)** Distribution of data sources within the LLaVA-OneVision-1.5Mid-Traning dataset. **(c)** Distribution of data sources within the LLaVA-OneVision-1.5-Mid-Traningdataset.</p>
+<p align="left">
+  <strong>(a)</strong> The vocabulary coverage proportion in the LLaVA-OneVision-1.5 Mid-Training dataset before and after concept balancing.
+  <strong>(b)</strong> Distribution of data sources within the LLaVA-OneVision-1.5 Mid-Training dataset.
+  <strong>(c)</strong> Distribution of data sources within the LLaVA-OneVision-1.5 Mid-Training dataset.
+</p>
 
 | Description        | Link                                                                                                   | Status      |
 |--------------------|--------------------------------------------------------------------------------------------------------|-------------|
@@ -82,8 +85,6 @@ before and after concept balancing. **(b)** Distribution of data sources within 
 All evaluations were conducted using lmms_eval.
 
 ![](asset/performance.png)
-<p align="center"><b></b> Performance comparison across vision-language models on various benchmarks grouped by task
-type. All scores are reported as accuracy percentages unless otherwise specified.</p>
 
 
 ## Quick Start with HuggingFace
