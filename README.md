@@ -35,7 +35,7 @@
 - **Superior Performance**
 A family of fully open-source large multimodal models demonstrating 
     - Superior performance across multiple multimodal benchmarks
-    - outperforming Qwen2.5-VL** in most evaluation tasks.
+    - outperforming **Qwen2.5-VL** in most evaluation tasks.
 
 - **High-Quality Data at Scale**
 Meticulously curated **pre-training and SFT data** with rigorous filtering and quality control, achieving **superior data efficiency** with only **64B tokens**.
