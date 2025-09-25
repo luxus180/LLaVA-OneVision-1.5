@@ -58,11 +58,10 @@ Meticulously curated **pre-training and SFT data** with rigorous filtering and q
 
 ## Models
 
-| Model                     | HuggingFace Link |
-|---------------------------|------------------|
-| LLaVA-OV-1.5-4B-Instruct  | (coming soon)    |
-| LLaVA-OV-1.5-8B-Instruct  | [🤗](https://huggingface.co/lmms-lab/LLaVA-OneVision-1.5-8B-Instruct) |
-
+| Model                    | HF Link                                                                                      | Training Log |
+|--------------------------|--------------------------------------------------------------------------------------------------------|-------------|
+| LLaVA-OV-1.5-4B-Instruct | Uploading…                                                                                            | Uploading…    |
+| LLaVA-OV-1.5-8B-Instruct | [🤗 HF / 8B-Instruct](https://huggingface.co/lmms-lab/LLaVA-OneVision-1.5-8B-Instruct)                | [📈 Tensorboard](https://huggingface.co/lmms-lab/LLaVA-OneVision-1.5-8B-Instruct/tree/main/tensorboard) |
 
 ## Datasets
 
@@ -75,8 +74,8 @@ Meticulously curated **pre-training and SFT data** with rigorous filtering and q
 
 | Description        | Link                                                                                                   | Status      |
 |--------------------|--------------------------------------------------------------------------------------------------------|-------------|
-| OV-1.5-Mid-Training-85M   | [🤗](https://huggingface.co/datasets/lmms-lab/LLaVA-One-Vision-1.5-Mid-Training-85M) | Uploading…  |
-| OV-1.5-Instruct           | [🤗](https://huggingface.co/datasets/lmms-lab/LLaVA-OneVision-1.5-Insturct-Data)     | Uploading…  |
+| OV-1.5-Mid-Training-85M   | [🤗HF/85M](https://huggingface.co/datasets/lmms-lab/LLaVA-One-Vision-1.5-Mid-Training-85M) | Uploading…  |
+| OV-1.5-Instruct           | [🤗HF/Inst](https://huggingface.co/datasets/lmms-lab/LLaVA-OneVision-1.5-Insturct-Data)     | Uploading…  |
 
 
 ## Evaluation Results
