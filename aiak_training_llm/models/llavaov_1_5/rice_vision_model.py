@@ -183,82 +183,57 @@ class RiceViTModel(VisionModel):
             eps=1e-4)
 
     def forward(self, x: torch.Tensor, grid_thw: torch.Tensor) -> torch.Tensor:
-        # self.class_embedding.zero_()
-        # self.class_pos_emb.zero_()
-        # 应用patch嵌入
-        # print_rank_0(self.pre_layernorm.weight)
-        # print_rank_0(self.pre_layernorm.bias)
-
         x = self.patch_embed(x)
 
-        # print_rank_0("In MegatronLM forward, hidden_states:")
-        # print_rank_0(x)
-        # 获取batch_size和序列长度
         batch_size = grid_thw.size(0)
         seq_len, hidden_dim = x.size()
-        # 获取旋转位置编码
+
         rotary_pos_emb = self.rot_pos_emb(grid_thw)
-        # print_rank_0("In MegatronLM forward, rotary_pos_emb")
-        # 创建class token和它的位置编码
-        # 为每个batch创建一个class token
+
         class_embedding = self.class_embedding.view(1, -1)
         class_pos_emb = self.class_pos_emb.view(1, -1)
         class_tokens = class_embedding.expand(batch_size, -1)
         class_pos_embs = class_pos_emb.expand(batch_size, -1)
 
-        # 计算每个样本在原始序列中的token数量
         tokens_per_sample = []
 
         for i in range(batch_size):
             t, h, w = grid_thw[i]
             tokens_per_sample.append((t * h * w).item())
 
-        # 将class tokens插入到对应batch的token序列开头
         new_x = []
         start_idx = 0
         for i in range(batch_size):
-            # 添加当前batch的class token
             new_x.append(class_tokens[i:i+1])
-            # 添加当前batch的image tokens
             new_x.append(x[start_idx:start_idx+tokens_per_sample[i]])
             start_idx += tokens_per_sample[i]
 
-        # 将所有token连接成一个序列
         x = torch.cat(new_x, dim=0)
 
-
-        # rotary_pos_emb = rotary_pos_emb.reshape(seq_len // self.spatial_merge_unit, self.spatial_merge_unit, -1)
-        # rotary_pos_emb = rotary_pos_emb.reshape(seq_len, -1)
-
-        # 同样为位置编码添加class token的位置编码
         new_rotary_pos_emb = []
         start_idx = 0
         for i in range(batch_size):
-            # 添加当前batch的class token位置编码
             new_rotary_pos_emb.append(class_pos_embs[i:i+1])
-            # 添加当前batch的image token位置编码
             new_rotary_pos_emb.append(rotary_pos_emb[start_idx:start_idx+tokens_per_sample[i]])
-
             start_idx += tokens_per_sample[i]
-        # 将所有位置编码连接成一个序列
+
         rotary_pos_emb = torch.cat(new_rotary_pos_emb, dim=0)
-        # 更新cu_seqlens，每个batch需要考虑额外的class token
+
         cu_seqlens = []
         cumulative_length = 0
         cu_seqlens.append(cumulative_length)  # 起始为0
         for length in tokens_per_sample:
-            # 每个batch的长度需要+1，因为添加了class token
+
             cumulative_length += int(length + 1)
             cu_seqlens.append(cumulative_length)
 
-        # 转换为tensor
+
         cu_seqlens = torch.tensor(
             cu_seqlens,
             device=x.device,
             dtype=grid_thw.dtype if torch.jit.is_tracing() else torch.int32
         )
-        # print_rank_0(cu_seqlens)
-        # print_rank_0(x.size())
+
         x = x[:, None, :].contiguous()  # [s, h] -> [s, 1, h]
 
         x = self.pre_layernorm(x)
@@ -279,12 +254,8 @@ class RiceViTModel(VisionModel):
         patch_output = []
         start_idx = 0
         for i in range(batch_size):
-            # 跳过class token
             start_idx += 1
-            # 收集图像tokens
             patch_output.append(x[start_idx:start_idx+tokens_per_sample[i]])
-            # print_rank_0(f"start: {start_idx}, end: {start_idx + tokens_per_sample[i]}, tokens_per_sample: {tokens_per_sample[i]}")
-            # 移动到下一个batch的起始位置
             start_idx += tokens_per_sample[i]
         patch_output = torch.cat(patch_output, dim=0)  # [原始seq_len, hidden_size]
         return patch_output, None
@@ -298,43 +269,35 @@ class RiceViTModel(VisionModel):
 
         batch_size = grid_thw.size(0)
         seq_len, hidden_dim = x.size()
-        # 获取旋转位置编码
         rotary_pos_emb = self.rot_pos_emb(grid_thw)
         class_embedding = self.class_embedding.view(1, -1)
         class_pos_emb = self.class_pos_emb.view(1, -1)
         class_tokens = class_embedding.expand(batch_size, -1)
         class_pos_embs = class_pos_emb.expand(batch_size, -1)
 
-        # 计算每个样本在原始序列中的token数量
         tokens_per_sample = []
 
         for i in range(batch_size):
             t, h, w = grid_thw[i]
             tokens_per_sample.append((t * h * w).item())
 
-        # 将class tokens插入到对应batch的token序列开头
         new_x = []
         start_idx = 0
         for i in range(batch_size):
-            # 添加当前batch的class token
+
             new_x.append(class_tokens[i:i+1])
-            # 添加当前batch的image tokens
+
             new_x.append(x[start_idx:start_idx+tokens_per_sample[i]])
             start_idx += tokens_per_sample[i]
 
         x = torch.cat(new_x, dim=0)
-
-        # 同样为位置编码添加class token的位置编码
         new_rotary_pos_emb = []
         start_idx = 0
         for i in range(batch_size):
-            # 添加当前batch的class token位置编码
             new_rotary_pos_emb.append(class_pos_embs[i:i+1])
-            # 添加当前batch的image token位置编码
             new_rotary_pos_emb.append(rotary_pos_emb[start_idx:start_idx+tokens_per_sample[i]])
-
             start_idx += tokens_per_sample[i]
-        # 将所有位置编码连接成一个序列
+
         rotary_pos_emb = torch.cat(new_rotary_pos_emb, dim=0)
         output["rotary_pos_emb"] = rotary_pos_emb.clone()
         output["class_embedding"] = self.class_embedding.clone()
@@ -342,18 +305,17 @@ class RiceViTModel(VisionModel):
         cumulative_length = 0
         cu_seqlens.append(cumulative_length)  # 起始为0
         for length in tokens_per_sample:
-            # 每个batch的长度需要+1，因为添加了class token
+
             cumulative_length += int(length + 1)
             cu_seqlens.append(cumulative_length)
 
-        # 转换为tensor
+
         cu_seqlens = torch.tensor(
             cu_seqlens,
             device=x.device,
             dtype=grid_thw.dtype if torch.jit.is_tracing() else torch.int32
         )
-        # print_rank_0(cu_seqlens)
-        # print_rank_0(x.size())
+
         x = x[:, None, :].contiguous()  # [s, h] -> [s, 1, h]
 
         x = self.pre_layernorm(x)
@@ -374,12 +336,8 @@ class RiceViTModel(VisionModel):
         patch_output = []
         start_idx = 0
         for i in range(batch_size):
-            # 跳过class token
             start_idx += 1
-            # 收集图像tokens
             patch_output.append(x[start_idx:start_idx+tokens_per_sample[i]])
-            # print_rank_0(f"start: {start_idx}, end: {start_idx + tokens_per_sample[i]}, tokens_per_sample: {tokens_per_sample[i]}")
-            # 移动到下一个batch的起始位置
             start_idx += tokens_per_sample[i]
         patch_output = torch.cat(patch_output, dim=0)  # [原始seq_len, hidden_size]
         output["before_adapter"] = patch_output.clone()
