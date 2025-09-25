@@ -1,4 +1,10 @@
-<h1 align="center">LLaVA-OneVision-1.5</h1>
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="asset/llava_onevision_black.png">
+    <source media="(prefers-color-scheme: light)" srcset="asset/llava_onevision_white.png">
+    <img alt="LLaVA-OneVision 1.5" src="output/llava_onevision_white.png" width="600" style="max-width: 100%;">
+  </picture>
+</p>
 
 <p align="center">
   <strong>Fully Open Framework for Democratized Multimodal Training</strong>
