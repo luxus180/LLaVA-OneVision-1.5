@@ -9,6 +9,10 @@ jobs:
     name: A job to automate contrib in readme
     steps:
       - name: Contribute List
-        uses: akhilmhdh/contributors-readme-action@v2.3.10
+        uses: akhilmhdh/contributors-readme-action@v2.3.11
+        with:
+          image_size: 50
+          use_username: true
+          columns_per_row: 12
         env:
           GITHUB_TOKEN: ${{ secrets.LLaVA_OV_CONTRIBUTORS }}
