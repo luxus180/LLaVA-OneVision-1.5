@@ -100,7 +100,7 @@ Meticulously curated **pre-training and SFT data** with rigorous filtering and q
 <p align="left">
   <strong>(a)</strong> The vocabulary coverage proportion in the LLaVA-OneVision-1.5 Mid-Training dataset before and after concept balancing.
   <strong>(b)</strong> Distribution of data sources within the LLaVA-OneVision-1.5 Mid-Training dataset.
-  <strong>(c)</strong> Distribution of data sources within the LLaVA-OneVision-1.5 Mid-Training dataset.
+  <strong>(c)</strong> Distribution of data sources within the LLaVA-OneVision-1.5 Insturct dataset.
 </p>
 
 | Description        | Link                                                                                                   | Status      |
