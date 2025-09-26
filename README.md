@@ -29,7 +29,6 @@
     <img alt="HF Instruct Dataset Downloads" src="https://img.shields.io/badge/dynamic/json?url=https://huggingface.co/api/datasets/lmms-lab/LLaVA-OneVision-1.5-Insturct-Data&query=downloads&label=Instruct%20DATA%20Downloads&color=blue">
   </a>
   <img alt="Training Cost" src="https://img.shields.io/badge/Full%20Train%20Cost-~$16K-success">
-  <img alt="Native Resolution" src="https://img.shields.io/badge/Native_Resolution-Enabled-brightgreen">
   <a href="LICENSE">
     <img alt="License" src="https://img.shields.io/badge/License-Apache--2.0-blue.svg">
   </a>
