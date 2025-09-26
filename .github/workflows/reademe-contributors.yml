@@ -11,8 +11,8 @@ jobs:
       - name: Contribute List
         uses: akhilmhdh/contributors-readme-action@v2.3.11
         with:
-          image_size: 50
+          image_size: 80
           use_username: true
-          columns_per_row: 12
+          columns_per_row: 8
         env:
           GITHUB_TOKEN: ${{ secrets.LLaVA_OV_CONTRIBUTORS }}
