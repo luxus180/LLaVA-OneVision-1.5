@@ -18,6 +18,31 @@
 
 </div>
 
+
+<p align="center">
+  <!-- Mid-Training Dataset Downloads -->
+  <a href="https://huggingface.co/datasets/lmms-lab/LLaVA-One-Vision-1.5-Mid-Training-85M">
+    <img alt="HF Mid-Training Dataset Downloads" src="https://img.shields.io/badge/dynamic/json?url=https://huggingface.co/api/datasets/lmms-lab/LLaVA-One-Vision-1.5-Mid-Training-85M&query=downloads&label=Mid%20Training%20DATA%20Downloads&color=green">
+  </a>
+  <!-- Instruct Dataset Downloads -->
+  <a href="https://huggingface.co/datasets/lmms-lab/LLaVA-OneVision-1.5-Insturct-Data">
+    <img alt="HF Instruct Dataset Downloads" src="https://img.shields.io/badge/dynamic/json?url=https://huggingface.co/api/datasets/lmms-lab/LLaVA-OneVision-1.5-Insturct-Data&query=downloads&label=Instruct%20DATA%20Downloads&color=blue">
+  </a>
+  <img alt="Training Cost" src="https://img.shields.io/badge/Full%20Train%20Cost-~$16K-success">
+  <a href="LICENSE">
+    <img alt="License" src="https://img.shields.io/badge/License-Apache--2.0-blue.svg">
+  </a>
+  <a href="https://github.com/EvolvingLMMs-Lab/LLaVA-OneVision-1.5">
+    <img alt="Stars" src="https://img.shields.io/github/stars/EvolvingLMMs-Lab/LLaVA-OneVision-1.5?style=social">
+  </a>
+  <a href="https://github.com/EvolvingLMMs-Lab/LLaVA-OneVision-1.5/pulls">
+    <img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg">
+  </a>
+  <a href="https://huggingface.co/lmms-lab/LLaVA-OneVision-1.5-8B-Instruct">
+    <img alt="HF Model Downloads" src="https://img.shields.io/badge/dynamic/json?url=https://huggingface.co/api/models/lmms-lab/LLaVA-OneVision-1.5-8B-Instruct&query=downloads&label=HF-Model%20Downloads&color=yellow">
+  </a>
+</p>
+
 ---
 
 
@@ -67,7 +92,7 @@ Meticulously curated **pre-training and SFT data** with rigorous filtering and q
 | Model                    | HF Link                                                                                      | Training Log |
 |--------------------------|--------------------------------------------------------------------------------------------------------|-------------|
 | LLaVA-OV-1.5-4B-Instruct | Uploading…                                                                                            | Uploading…    |
-| LLaVA-OV-1.5-8B-Instruct | [🤗 HF / 8B-Instruct](https://huggingface.co/lmms-lab/LLaVA-OneVision-1.5-8B-Instruct)                | [📈 Tensorboard](https://huggingface.co/lmms-lab/LLaVA-OneVision-1.5-8B-Instruct/tree/main/tensorboard) |
+| LLaVA-OV-1.5-8B-Instruct | [🤗 HF / 8B-Instruct](https://huggingface.co/lmms-lab/LLaVA-OneVision-1.5-8B-Instruct)                | [📈 Tensorboard](https://huggingface.co/lmms-lab/LLaVA-OneVision-1.5-8B-Instruct/tensorboard) |
 
 ## Datasets
 
@@ -75,7 +100,7 @@ Meticulously curated **pre-training and SFT data** with rigorous filtering and q
 <p align="left">
   <strong>(a)</strong> The vocabulary coverage proportion in the LLaVA-OneVision-1.5 Mid-Training dataset before and after concept balancing.
   <strong>(b)</strong> Distribution of data sources within the LLaVA-OneVision-1.5 Mid-Training dataset.
-  <strong>(c)</strong> Distribution of data sources within the LLaVA-OneVision-1.5 Mid-Training dataset.
+  <strong>(c)</strong> Distribution of data sources within the LLaVA-OneVision-1.5 Insturct dataset.
 </p>
 
 | Description        | Link                                                                                                   | Status      |
@@ -289,15 +314,21 @@ CUDA_VISIBLE_DEVICES=4,5,6,7 accelerate launch \
 
 ## Fully Reproducing Guide
 
-### 1. Data Processing
+> [!TIP]
+> More detailed reproduction steps for the complete process will be provided after the dataset upload is completed.
+
+
+### Mid-Training
+
 To improve model training efficiency, we implement offline sample packing:
 
-1. Download the [lmms-lab/LLaVA-One-Vision-1.5-Mid-Training-85M dataset](https://huggingface.co/datasets/lmms-lab/LLaVA-One-Vision-1.5-Mid-Training-85M)
-2. Pack the mid-training data into webdataset format, For detailed instructions, refer to [examples/llava_ov_1_5/sample_packing/README.md](examples/llava_ov_1_5/sample_packing/README.md)
+1. Download the [**Mid-Training-85M Dataset**](https://huggingface.co/datasets/lmms-lab/LLaVA-One-Vision-1.5-Mid-Training-85M)
+2. Pack the data into webdataset format, refer to [**Offline Padding-Free Data Packing**](examples/llava_ov_1_5/sample_packing/README.md)
 
 
-### 2. Training
-More detailed reproduction steps for the complete process will be provided after the dataset upload is completed.
+### Instruct
+1. Download the [**LLaVA-OneVision-1.5-Insturct-Data**](https://huggingface.co/datasets/lmms-lab/LLaVA-OneVision-1.5-Insturct-Data)
+2. Convert the data into webdataset format, refer to [**Conversion for Mixed Instruction Data**](docs/sft_data_preprocessing.md)
 
 ## Roadmaps
 
@@ -316,44 +347,51 @@ Thanks so much to all of our amazing contributors!
 		<tr>
             <td align="center">
                 <a href="https://github.com/anxiangsir">
-                    <img src="https://avatars.githubusercontent.com/u/31175974?v=4" width="100;" alt="anxiangsir"/>
+                    <img src="https://avatars.githubusercontent.com/u/31175974?v=4" width="80;" alt="anxiangsir"/>
                     <br />
-                    <sub><b>Xiang An</b></sub>
+                    <sub><b>anxiangsir</b></sub>
                 </a>
             </td>
             <td align="center">
                 <a href="https://github.com/yiyexy">
-                    <img src="https://avatars.githubusercontent.com/u/35927125?v=4" width="100;" alt="yiyexy"/>
+                    <img src="https://avatars.githubusercontent.com/u/35927125?v=4" width="80;" alt="yiyexy"/>
                     <br />
                     <sub><b>yiyexy</b></sub>
                 </a>
             </td>
             <td align="center">
                 <a href="https://github.com/chengzheng345">
-                    <img src="https://avatars.githubusercontent.com/u/209475443?v=4" width="100;" alt="chengzheng345"/>
+                    <img src="https://avatars.githubusercontent.com/u/209475443?v=4" width="80;" alt="chengzheng345"/>
                     <br />
                     <sub><b>chengzheng345</b></sub>
                 </a>
             </td>
             <td align="center">
-                <a href="https://github.com/mathCrazyy">
-                    <img src="https://avatars.githubusercontent.com/u/20607153?v=4" width="100;" alt="mathCrazyy"/>
+                <a href="https://github.com/wideyard">
+                    <img src="https://avatars.githubusercontent.com/u/101321826?v=4" width="80;" alt="wideyard"/>
                     <br />
-                    <sub><b>chunshengwu</b></sub>
+                    <sub><b>wideyard</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/mathCrazyy">
+                    <img src="https://avatars.githubusercontent.com/u/20607153?v=4" width="80;" alt="mathCrazyy"/>
+                    <br />
+                    <sub><b>mathCrazyy</b></sub>
                 </a>
             </td>
             <td align="center">
                 <a href="https://github.com/yunglechao">
-                    <img src="https://avatars.githubusercontent.com/u/7631185?v=4" width="100;" alt="yunglechao"/>
+                    <img src="https://avatars.githubusercontent.com/u/7631185?v=4" width="80;" alt="yunglechao"/>
                     <br />
-                    <sub><b>yonglezhao</b></sub>
+                    <sub><b>yunglechao</b></sub>
                 </a>
             </td>
             <td align="center">
                 <a href="https://github.com/RobitYadda">
-                    <img src="https://avatars.githubusercontent.com/u/6811311?v=4" width="100;" alt="RobitYadda"/>
+                    <img src="https://avatars.githubusercontent.com/u/6811311?v=4" width="80;" alt="RobitYadda"/>
                     <br />
-                    <sub><b>zizhenyan</b></sub>
+                    <sub><b>RobitYadda</b></sub>
                 </a>
             </td>
 		</tr>

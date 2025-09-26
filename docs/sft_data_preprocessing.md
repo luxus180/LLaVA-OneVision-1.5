@@ -23,7 +23,7 @@ docker run -it --gpus all \
 
 ## 2\. Data Download
 
-Download LLaVA-NeXT-780k-webdataset at [LLaVA-NeXT-780k](https://huggingface.co/datasets/lmms-lab/LLaVA-NeXT-Data)
+Download LLaVA-NeXT-780k at [🤗HF/LLaVA-NeXT-780k](https://huggingface.co/datasets/lmms-lab/LLaVA-NeXT-Data)
 
 
 ## 3\. Execute the WebDataset Conversion
