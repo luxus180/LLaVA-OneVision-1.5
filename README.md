@@ -289,15 +289,21 @@ CUDA_VISIBLE_DEVICES=4,5,6,7 accelerate launch \
 
 ## Fully Reproducing Guide
 
-### 1. Data Processing
+> [!TIP]
+> More detailed reproduction steps for the complete process will be provided after the dataset upload is completed.
+
+
+### Mid-Training
+
 To improve model training efficiency, we implement offline sample packing:
 
-1. Download the [lmms-lab/LLaVA-One-Vision-1.5-Mid-Training-85M dataset](https://huggingface.co/datasets/lmms-lab/LLaVA-One-Vision-1.5-Mid-Training-85M)
-2. Pack the mid-training data into webdataset format, For detailed instructions, refer to [examples/llava_ov_1_5/sample_packing/README.md](examples/llava_ov_1_5/sample_packing/README.md)
+1. Download the [**Mid-Training-85M Dataset**](https://huggingface.co/datasets/lmms-lab/LLaVA-One-Vision-1.5-Mid-Training-85M)
+2. Pack the mid-training data into webdataset format, For detailed instructions, refer to [**Offline Padding-Free Data Packing**](examples/llava_ov_1_5/sample_packing/README.md)
 
 
-### 2. Training
-More detailed reproduction steps for the complete process will be provided after the dataset upload is completed.
+### Instruct
+1. Download the [**LLaVA-OneVision-1.5-Insturct-Data**](https://huggingface.co/datasets/lmms-lab/LLaVA-OneVision-1.5-Insturct-Data)
+2. Convert the instruct data into webdataset format, For detailed instructions, refer to [**WebDataset Conversion for Mixed Instruction Data**](docs/sft_data_preprocessing.md)
 
 ## Roadmaps
 
