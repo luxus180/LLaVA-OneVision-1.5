@@ -322,53 +322,51 @@ Thanks so much to all of our amazing contributors!
 		<tr>
             <td align="center">
                 <a href="https://github.com/anxiangsir">
-                    <img src="https://avatars.githubusercontent.com/u/31175974?v=4" width="100;" alt="anxiangsir"/>
+                    <img src="https://avatars.githubusercontent.com/u/31175974?v=4" width="50;" alt="anxiangsir"/>
                     <br />
-                    <sub><b>Xiang An</b></sub>
+                    <sub><b>anxiangsir</b></sub>
                 </a>
             </td>
             <td align="center">
                 <a href="https://github.com/yiyexy">
-                    <img src="https://avatars.githubusercontent.com/u/35927125?v=4" width="100;" alt="yiyexy"/>
+                    <img src="https://avatars.githubusercontent.com/u/35927125?v=4" width="50;" alt="yiyexy"/>
                     <br />
                     <sub><b>yiyexy</b></sub>
                 </a>
             </td>
             <td align="center">
                 <a href="https://github.com/chengzheng345">
-                    <img src="https://avatars.githubusercontent.com/u/209475443?v=4" width="100;" alt="chengzheng345"/>
+                    <img src="https://avatars.githubusercontent.com/u/209475443?v=4" width="50;" alt="chengzheng345"/>
                     <br />
                     <sub><b>chengzheng345</b></sub>
                 </a>
             </td>
             <td align="center">
                 <a href="https://github.com/wideyard">
-                    <img src="https://avatars.githubusercontent.com/u/101321826?v=4" width="100;" alt="wideyard"/>
+                    <img src="https://avatars.githubusercontent.com/u/101321826?v=4" width="50;" alt="wideyard"/>
                     <br />
-                    <sub><b>yirui wang</b></sub>
+                    <sub><b>wideyard</b></sub>
                 </a>
             </td>
             <td align="center">
                 <a href="https://github.com/mathCrazyy">
-                    <img src="https://avatars.githubusercontent.com/u/20607153?v=4" width="100;" alt="mathCrazyy"/>
+                    <img src="https://avatars.githubusercontent.com/u/20607153?v=4" width="50;" alt="mathCrazyy"/>
                     <br />
-                    <sub><b>chunshengwu</b></sub>
+                    <sub><b>mathCrazyy</b></sub>
                 </a>
             </td>
             <td align="center">
                 <a href="https://github.com/yunglechao">
-                    <img src="https://avatars.githubusercontent.com/u/7631185?v=4" width="100;" alt="yunglechao"/>
+                    <img src="https://avatars.githubusercontent.com/u/7631185?v=4" width="50;" alt="yunglechao"/>
                     <br />
-                    <sub><b>yonglezhao</b></sub>
+                    <sub><b>yunglechao</b></sub>
                 </a>
             </td>
-		</tr>
-		<tr>
             <td align="center">
                 <a href="https://github.com/RobitYadda">
-                    <img src="https://avatars.githubusercontent.com/u/6811311?v=4" width="100;" alt="RobitYadda"/>
+                    <img src="https://avatars.githubusercontent.com/u/6811311?v=4" width="50;" alt="RobitYadda"/>
                     <br />
-                    <sub><b>zizhenyan</b></sub>
+                    <sub><b>RobitYadda</b></sub>
                 </a>
             </td>
 		</tr>
