@@ -360,17 +360,17 @@ Thanks so much to all of our amazing contributors!
                 </a>
             </td>
             <td align="center">
-                <a href="https://github.com/chengzheng345">
-                    <img src="https://avatars.githubusercontent.com/u/209475443?v=4" width="80;" alt="chengzheng345"/>
-                    <br />
-                    <sub><b>chengzheng345</b></sub>
-                </a>
-            </td>
-            <td align="center">
                 <a href="https://github.com/wideyard">
                     <img src="https://avatars.githubusercontent.com/u/101321826?v=4" width="80;" alt="wideyard"/>
                     <br />
                     <sub><b>wideyard</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/chengzheng345">
+                    <img src="https://avatars.githubusercontent.com/u/209475443?v=4" width="80;" alt="chengzheng345"/>
+                    <br />
+                    <sub><b>chengzheng345</b></sub>
                 </a>
             </td>
             <td align="center">
