@@ -298,12 +298,12 @@ CUDA_VISIBLE_DEVICES=4,5,6,7 accelerate launch \
 To improve model training efficiency, we implement offline sample packing:
 
 1. Download the [**Mid-Training-85M Dataset**](https://huggingface.co/datasets/lmms-lab/LLaVA-One-Vision-1.5-Mid-Training-85M)
-2. Pack the mid-training data into webdataset format, For detailed instructions, refer to [**Offline Padding-Free Data Packing**](examples/llava_ov_1_5/sample_packing/README.md)
+2. Pack the data into webdataset format, refer to [**Offline Padding-Free Data Packing**](examples/llava_ov_1_5/sample_packing/README.md)
 
 
 ### Instruct
 1. Download the [**LLaVA-OneVision-1.5-Insturct-Data**](https://huggingface.co/datasets/lmms-lab/LLaVA-OneVision-1.5-Insturct-Data)
-2. Convert the instruct data into webdataset format, For detailed instructions, refer to [**WebDataset Conversion for Mixed Instruction Data**](docs/sft_data_preprocessing.md)
+2. Convert the data into webdataset format, refer to [**Conversion for Mixed Instruction Data**](docs/sft_data_preprocessing.md)
 
 ## Roadmaps
 
