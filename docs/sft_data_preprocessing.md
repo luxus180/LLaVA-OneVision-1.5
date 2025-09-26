@@ -114,8 +114,9 @@ Key Parameters
 ## 4\. Verifying the Conversion (Optional)
 To ensure the conversion was successful and the data loader can correctly interpret your new Energon dataset, use the preview command.
 ```bash
-energon preview wds
+energon preview path_to_wds
 ```
 If the images are displayed correctly, the conversion was successful.
 Here is an example:
-![WebDataset Verification](../asset/wds_verification.png)
+
+<img src="../asset/wds_verification.png" style="max-width: 90%; height: auto;">
