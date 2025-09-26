@@ -18,6 +18,36 @@
 
 </div>
 
+
+<p align="center">
+  <!-- Model Downloads -->
+  <a href="https://huggingface.co/lmms-lab/LLaVA-OneVision-1.5-8B-Instruct">
+    <img alt="HF Model Downloads" src="https://img.shields.io/badge/dynamic/json?url=https://huggingface.co/api/models/lmms-lab/LLaVA-OneVision-1.5-8B-Instruct&query=downloads&label=HF%20Model%20Downloads&color=yellow">
+  </a>
+  <!-- Mid-Training Dataset Downloads -->
+  <a href="https://huggingface.co/datasets/lmms-lab/LLaVA-One-Vision-1.5-Mid-Training-85M">
+    <img alt="HF Mid-Training Dataset Downloads" src="https://img.shields.io/badge/dynamic/json?url=https://huggingface.co/api/datasets/lmms-lab/LLaVA-One-Vision-1.5-Mid-Training-85M&query=downloads&label=Mid%20Training%20DS%20Downloads&color=green">
+  </a>
+  <!-- Instruct Dataset Downloads -->
+  <a href="https://huggingface.co/datasets/lmms-lab/LLaVA-OneVision-1.5-Insturct-Data">
+    <img alt="HF Instruct Dataset Downloads" src="https://img.shields.io/badge/dynamic/json?url=https://huggingface.co/api/datasets/lmms-lab/LLaVA-OneVision-1.5-Insturct-Data&query=downloads&label=Instruct%20DS%20Downloads&color=blue">
+  </a>
+  <img alt="Training Cost" src="https://img.shields.io/badge/Full%20Train%20Cost-~$16K-success">
+  <img alt="Native Resolution" src="https://img.shields.io/badge/Native_Resolution-Enabled-brightgreen">
+  <a href="LICENSE">
+    <img alt="License" src="https://img.shields.io/badge/License-Apache--2.0-blue.svg">
+  </a>
+  <a href="https://github.com/EvolvingLMMs-Lab/LLaVA-OneVision-1.5">
+    <img alt="Stars" src="https://img.shields.io/github/stars/EvolvingLMMs-Lab/LLaVA-OneVision-1.5?style=social">
+  </a>
+  <a href="https://github.com/EvolvingLMMs-Lab/LLaVA-OneVision-1.5/pulls">
+    <img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg">
+  </a>
+  <a href="https://huggingface.co/lmms-lab/LLaVA-OneVision-1.5-8B-Instruct">
+    <img alt="HF Model Downloads" src="https://img.shields.io/badge/dynamic/json?url=https://huggingface.co/api/models/lmms-lab/LLaVA-OneVision-1.5-8B-Instruct&query=downloads&label=HF%20Downloads&color=yellow">
+  </a>
+</p>
+
 ---
 
 
