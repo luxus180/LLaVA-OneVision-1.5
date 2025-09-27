@@ -39,7 +39,7 @@
     <img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg">
   </a>
   <a href="https://huggingface.co/lmms-lab/LLaVA-OneVision-1.5-8B-Instruct">
-    <img alt="HF Model Downloads" src="https://img.shields.io/badge/dynamic/json?url=https://huggingface.co/api/models/lmms-lab/LLaVA-OneVision-1.5-8B-Instruct&query=downloads&label=HF-Model%20Downloads&color=yellow">
+    <img alt="HF Model Downloads" src="https://img.shields.io/badge/dynamic/json?url=https://huggingface.co/api/models/lmms-lab/LLaVA-OneVision-1.5-8B-Instruct&query=downloads&label=OV-1.5-8B-Instruct%20Downloads&color=yellow">
   </a>
 </p>
 
