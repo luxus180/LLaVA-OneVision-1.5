@@ -413,7 +413,7 @@ If you find *LLaVA-OneVision-1.5* useful in your research, please consider to ci
 ```
 @inproceedings{LLaVA-OneVision-1.5,
   title={LLaVA-OneVision-1.5: Fully Open Framework for Democratized Multimodal Training},
-  author={LLaVA Community Contributors},
+  author={An, Xiang and Xie, Yin and Yang, Kaicheng and Zhang, Wenkang and Zhao, Xiuwei and Cheng, Zheng and Wang, Yirui and Xu, Songcen and Chen, Changrui and Wu, Chunsheng and Tan, Huajie and Li, Chunyuan and Yang, Jing and Yu, Jie and Wang, Xiyao and Qin, Bin and Wang, Yumeng and Yan, Zizhen and Feng, Ziyong and Liu, Ziwei and Li, Bo and Deng, Jiankang},
   booktitle={arxiv},  
   year={2025}
  }
