@@ -363,13 +363,6 @@ Thanks so much to all of our amazing contributors!
 	<tbody>
 		<tr>
             <td align="center">
-                <a href="https://github.com/jiankangdeng">
-                    <img src="https://avatars.githubusercontent.com/u/8391417?v=4" width="80;" alt="jiankangdeng"/>
-                    <br />
-                    <sub><b>jiankangdeng</b></sub>
-                </a>
-            </td>
-            <td align="center">
                 <a href="https://github.com/anxiangsir">
                     <img src="https://avatars.githubusercontent.com/u/31175974?v=4" width="80;" alt="anxiangsir"/>
                     <br />
@@ -416,6 +409,13 @@ Thanks so much to all of our amazing contributors!
                     <img src="https://avatars.githubusercontent.com/u/6811311?v=4" width="80;" alt="RobitYadda"/>
                     <br />
                     <sub><b>RobitYadda</b></sub>
+                </a>
+            </td>
+			<td align="center">
+                <a href="https://github.com/jiankangdeng">
+                    <img src="https://avatars.githubusercontent.com/u/8391417?v=4" width="80;" alt="jiankangdeng"/>
+                    <br />
+                    <sub><b>jiankangdeng</b></sub>
                 </a>
             </td>
 		</tr>
