@@ -46,10 +46,10 @@ def parese_dataset(data_item,ip_indx,ip_num,dst_dir):
         
         image_path=os.path.join(dst_dir,name+'.jpg')
         item['image'].save(image_path)
-        if cfg['filter_with_caption'] and not check_caption(item['caption']):
+        if cfg['data']['filter_with_caption'] and not check_caption(item['caption']):
             print(f"{item['id']} has bad caption")
             return
-        if cfg['filter_with_image'] and not check_image(image_path):
+        if cfg['data']['filter_with_image'] and not check_image(image_path):
             print(f"{item['id']} has bad image")
             return
         json_data={
