@@ -122,8 +122,8 @@ Meticulously curated **pre-training and SFT data** with rigorous filtering and q
 
 | Description        | Link                                                                                                   | Status      |
 |--------------------|--------------------------------------------------------------------------------------------------------|-------------|
-| OV-1.5-Mid-Training-85M   | [🤗HF/85M](https://huggingface.co/datasets/lmms-lab/LLaVA-One-Vision-1.5-Mid-Training-85M) | Uploading…  |
-| OV-1.5-Instruct           | [🤗HF/Inst](https://huggingface.co/datasets/lmms-lab/LLaVA-OneVision-1.5-Insturct-Data)     | Uploading…  |
+| LLaVA-OV-1.5-Mid-Training-85M   | [🤗HF / Mid-Training 85M](https://huggingface.co/datasets/lmms-lab/LLaVA-One-Vision-1.5-Mid-Training-85M) | Uploading…  |
+| LLaVA-OV-1.5-Instruct           | [🤗HF / Insturct-Data](https://huggingface.co/datasets/lmms-lab/LLaVA-OneVision-1.5-Insturct-Data)     | Uploading…  |
 
 
 ## Evaluation Results
