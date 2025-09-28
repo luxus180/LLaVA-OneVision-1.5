@@ -54,6 +54,10 @@
   <a href="https://github.com/NVIDIA/Megatron-LM">
     <img src="https://img.shields.io/badge/Megatron--LM-mcore%20optimized-1560b9?logo=nvidia&amp" alt="Megatron-LM mcore optimized">
   </a>
+  <!-- ModelScope Collection -->
+  <a href="https://www.modelscope.cn/collections/LLaVA-OneVision-15-ff6ede3d20a643" target="_blank">
+    <img alt="ModelScope Collection" src="https://img.shields.io/badge/ModelScope-Collection-orange?logo=modelscope">
+  </a>
 </p>
 
 ---
