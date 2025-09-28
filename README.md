@@ -86,13 +86,12 @@ A family of fully open-source large multimodal models demonstrating
     - outperforming **Qwen2.5-VL** in most evaluation tasks.
 
 - **High-Quality Data at Scale**
-Meticulously curated **pre-training and SFT data** with rigorous filtering and quality control, achieving **superior data efficiency** with only **64B tokens**.
+Meticulously curated **pre-training and SFT data** with rigorous filtering and quality control.
     - Concept-balanced, highly diverse, high-quality caption data
     - Comprehensive instruction fine-tuning data covering a wide range of tasks
 
 - **Ultra-Efficient Training Framework** Complete end-to-end training framework designed for maximum efficiency:
     - $16000 total budget for full model training on A100 GPUs  ($0.6 per GPU/Hour)
-    - 45% HFU efficiency in 8k context length
     - Built on **MegatronLM** with support for **MoE**, **FP8**, and **long sequence parallelization**
     - Optimized codebase for cost-effective scaling
 
