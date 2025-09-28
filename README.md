@@ -358,7 +358,7 @@ Q4 2025 Key Deliverables:
 ## Contributors
 Thanks so much to all of our amazing contributors!
 
-<!-- readme: collaborators,contributors -start -->
+<!-- readme: collaborators,contributors,jiankangdeng/- -start -->
 <table>
 	<tbody>
 		<tr>
@@ -421,7 +421,7 @@ Thanks so much to all of our amazing contributors!
 		</tr>
 	<tbody>
 </table>
-<!-- readme: collaborators,contributors -end -->
+<!-- readme: collaborators,contributors,jiankangdeng/- -end -->
 
 ## Citation
 
