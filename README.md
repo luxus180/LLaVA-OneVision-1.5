@@ -22,24 +22,37 @@
 <p align="center">
   <!-- Mid-Training Dataset Downloads -->
   <a href="https://huggingface.co/datasets/lmms-lab/LLaVA-One-Vision-1.5-Mid-Training-85M">
-    <img alt="HF Mid-Training Dataset Downloads" src="https://img.shields.io/badge/dynamic/json?url=https://huggingface.co/api/datasets/lmms-lab/LLaVA-One-Vision-1.5-Mid-Training-85M&query=downloads&label=Mid%20Training%20DATA%20Downloads&color=green">
+    <img alt="HF Mid-Training Dataset Downloads" src="https://img.shields.io/badge/dynamic/json?url=https://huggingface.co/api/datasets/lmms-lab/LLaVA-One-Vision-1.5-Mid-Training-85M&amp;query=downloads&amp;label=Mid%20Training%20DATA%20Downloads&amp;color=green&amp;logo=huggingface&amp">
   </a>
   <!-- Instruct Dataset Downloads -->
   <a href="https://huggingface.co/datasets/lmms-lab/LLaVA-OneVision-1.5-Insturct-Data">
-    <img alt="HF Instruct Dataset Downloads" src="https://img.shields.io/badge/dynamic/json?url=https://huggingface.co/api/datasets/lmms-lab/LLaVA-OneVision-1.5-Insturct-Data&query=downloads&label=Instruct%20DATA%20Downloads&color=blue">
+    <img alt="HF Instruct Dataset Downloads" src="https://img.shields.io/badge/dynamic/json?url=https://huggingface.co/api/datasets/lmms-lab/LLaVA-OneVision-1.5-Insturct-Data&amp;query=downloads&amp;label=Instruct%20DATA%20Downloads&amp;color=blue&amp;logo=huggingface&amp">
   </a>
-  <img alt="Training Cost" src="https://img.shields.io/badge/Full%20Train%20Cost-~$16K-success">
-  <a href="LICENSE">
-    <img alt="License" src="https://img.shields.io/badge/License-Apache--2.0-blue.svg">
-  </a>
-  <a href="https://github.com/EvolvingLMMs-Lab/LLaVA-OneVision-1.5">
-    <img alt="Stars" src="https://img.shields.io/github/stars/EvolvingLMMs-Lab/LLaVA-OneVision-1.5?style=social">
-  </a>
-  <a href="https://github.com/EvolvingLMMs-Lab/LLaVA-OneVision-1.5/pulls">
-    <img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg">
-  </a>
+  <!-- Model Downloads -->
   <a href="https://huggingface.co/lmms-lab/LLaVA-OneVision-1.5-8B-Instruct">
-    <img alt="HF Model Downloads" src="https://img.shields.io/badge/dynamic/json?url=https://huggingface.co/api/models/lmms-lab/LLaVA-OneVision-1.5-8B-Instruct&query=downloads&label=OV-1.5-8B-Instruct%20Downloads&color=yellow">
+    <img alt="HF Model Downloads" src="https://img.shields.io/badge/dynamic/json?url=https://huggingface.co/api/models/lmms-lab/LLaVA-OneVision-1.5-8B-Instruct&amp;query=downloads&amp;label=OV-1.5-8B-Instruct%20Downloads&amp;color=yellow&amp;logo=huggingface&amp">
+  </a>
+  <!-- Training Cost -->
+  <img alt="Training Cost" src="https://img.shields.io/badge/Full%20Train%20Cost-~$16K-success">
+  <!-- License -->
+  <a href="LICENSE">
+    <img alt="License" src="https://img.shields.io/badge/License-Apache--2.0-blue.svg?logo=apache&amp">
+  </a>
+  <!-- PRs Welcome -->
+  <a href="https://github.com/EvolvingLMMs-Lab/LLaVA-OneVision-1.5/pulls">
+    <img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?logo=github&amp">
+  </a>
+  <!-- Commit Activity -->
+  <a href="https://github.com/EvolvingLMMs-Lab/LLaVA-OneVision-1.5/commits">
+    <img alt="Commit Activity" src="https://img.shields.io/github/commit-activity/m/EvolvingLMMs-Lab/LLaVA-OneVision-1.5?logo=github&amp">
+  </a>
+  <!-- Contributors -->
+  <a href="https://github.com/EvolvingLMMs-Lab/LLaVA-OneVision-1.5/graphs/contributors">
+    <img alt="Contributors" src="https://img.shields.io/github/contributors/EvolvingLMMs-Lab/LLaVA-OneVision-1.5?logo=github&amp">
+  </a>
+  <!-- Megatron-LM Optimization -->
+  <a href="https://github.com/NVIDIA/Megatron-LM">
+    <img src="https://img.shields.io/badge/Megatron--LM-mcore%20optimized-1560b9?logo=nvidia&amp" alt="Megatron-LM mcore optimized">
   </a>
 </p>
 
