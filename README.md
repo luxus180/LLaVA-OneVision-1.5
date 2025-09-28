@@ -457,4 +457,4 @@ We also thank the maintainers and contributors of the following open-source proj
 - Qwen2.5-VL: Strong vision-language foundation model — [Qwen2.5-VL](https://github.com/QwenLM/Qwen2.5-VL)
 - Qwen3: Next-generation Qwen LLM — [Qwen](https://github.com/QwenLM/Qwen)
 - MetaCLIP: Scalable contrastive pretraining — [MetaCLIP](https://github.com/facebookresearch/MetaCLIP)
-- FineVision: FineVision: Open Data Is All You Neede — [FineVision](https://huggingface.co/spaces/HuggingFaceM4/FineVision)
+- FineVision: Open Data Is All You Need — [FineVision](https://huggingface.co/spaces/HuggingFaceM4/FineVision)
