@@ -44,6 +44,7 @@ def load_empty_model(llm_path):
     llava_ov_config = Llavaonevision1_5Config()
     llm_config = AutoConfig.from_pretrained(llm_path, trust_remote_code=True)
     llava_ov_config.text_config.update(llm_config.to_dict())
+    llava_ov_config.vision_config.text_hidden_size = llava_ov_config.text_config.hidden_size
     model = LLaVAOneVision1_5_ForConditionalGeneration(llava_ov_config)
     return model, processor, tokenizer
 
