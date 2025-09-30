@@ -46,6 +46,7 @@ from transformers.masking_utils import create_causal_mask, create_sliding_window
 
 if is_flash_attn_available():
     from transformers.modeling_flash_attention_utils import _flash_attention_forward, flash_attn_varlen_func
+    from flash_attn import flash_attn_varlen_func
 
 if is_torch_flex_attn_available():
     from torch.nn.attention.flex_attention import BlockMask
