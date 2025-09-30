@@ -64,7 +64,7 @@
 
 
 ## NEWS
-- 2025-09-30: Released a comprehensive [Offline Data Pack documentation](offline_packing_examples).
+- 2025-09-30: Released a comprehensive [Offline Data Pack documentation](examples_offline_packing).
 - 2025-09-30: Released the LLaVA-OneVision-1.5 [Technical Report](https://arxiv.org/abs/2509.23661).
 
 
